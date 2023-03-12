@@ -6,7 +6,7 @@ export default function CommonLayout({ children }) {
   return (
     <div>
       <Grid2 container>
-        <Grid2 Item xs={2}>
+        <Grid2 Item xs={2} borderRight={2} borderColor="#D1D1D1">
           <SideNav />
         </Grid2>
         <Grid2 Item xs={10}>
