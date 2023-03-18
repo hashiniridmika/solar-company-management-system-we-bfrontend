@@ -1,17 +1,17 @@
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import React from "react";
-import TextBox from "../../components/Login/TextBox";
-import Button from "../../components/Login/Button";
+import { Typography } from "@mui/material";
+import InputtextboxandToplabel from "../../components/Login/InputtextboxandToplabel";
+import LoginButton from "../../components/Login/LoginButton";
 
 export default function Section() {
   return (
-    <div>
-      <Grid2 container direction="column">
-        Login
-        <TextBox />
-        <TextBox />
-        <Button />
-      </Grid2>
+    <div style={{ marginLeft: "auto", marginRight: "auto", width: "30%" }}>
+      <Typography color={"#797979"} fontSize={"120%"} paddingTop={"5%"}>
+        Log In
+      </Typography>
+      <InputtextboxandToplabel info={"User name/Email"} />
+      <InputtextboxandToplabel info={"Password"} />
+      <LoginButton />
     </div>
   );
 }
