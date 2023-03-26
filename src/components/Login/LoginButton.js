@@ -10,7 +10,14 @@ export default function LoginButton() {
           backgroundColor: "#00C569",
           width: "60%",
           textTransform: "none",
-          ":hover": "none",
+          "&:hover": {
+            backgroundColor: "#00C569", // Change hover background color
+            opacity: 0.8,
+          },
+          "&:active": {
+            backgroundColor: "#00C569", // Change active background color
+            opacity: 0.5,
+          },
         }}
       >
         Login
