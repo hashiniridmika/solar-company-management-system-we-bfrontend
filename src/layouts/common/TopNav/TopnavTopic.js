@@ -4,9 +4,7 @@ import TopicDetails from "../../../components/common/TopNav/TopnavTopic/TopicDet
 export default function TopnavTopic() {
   return (
     <div>
-      <div>
-        <TopicDetails />
-      </div>
+      <TopicDetails />
     </div>
   );
 }

@@ -27,7 +27,7 @@ export default function StatisticItems() {
     <div>
       {items.map((val, key) => {
         return (
-          <div key={key} style={{ padding: 20 }}>
+          <div key={key} style={{ padding: 17 }}>
             <StatItem info={val} />
           </div>
         );

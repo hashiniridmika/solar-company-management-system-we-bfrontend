@@ -5,16 +5,21 @@ import TopSearchButton from "../../../components/common/TopNav/TopSearch/TopSear
 
 export default function TopSearch() {
   return (
-    <div style={{ paddingLeft: 30, paddingRight: 30 }}>
+    <div style={{ paddingLeft: 30, paddingRight: 30, paddingTop: 10 }}>
       <div
         style={{
           backgroundColor: "#F8F8F8",
-          padding: "20px 20px 20px 10px",
+          padding: 20,
           borderRadius: 12,
-          paddingLeft: 20,
         }}
       >
-        <Grid2 container alignItems="center" justifyContent="left" spacing={3}>
+        <Grid2
+          container
+          alignItems="center"
+          justifyContent="left"
+          spacing={3}
+          paddingLeft={2}
+        >
           <Grid2 item>
             <TopSearchField />
           </Grid2>

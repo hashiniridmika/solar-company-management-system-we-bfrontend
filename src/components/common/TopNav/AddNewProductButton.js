@@ -16,7 +16,7 @@ export default function AddNewProductButton() {
         variant="contained"
         sx={{
           backgroundColor: "#00C569",
-          width: "10%",
+          width: 120,
           textTransform: "none",
           "&:hover": {
             backgroundColor: "#00C569", // Change hover background color

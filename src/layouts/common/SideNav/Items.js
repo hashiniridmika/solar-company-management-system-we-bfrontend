@@ -4,6 +4,7 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 export default function Items() {
   const button = [
+    "Dashboard",
     "Product Management",
     "Order Management",
     "Stock Management",

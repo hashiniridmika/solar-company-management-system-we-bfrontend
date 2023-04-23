@@ -10,21 +10,18 @@ export default function SideNav() {
       <div style={{ paddingTop: 5 }}>
         <Profile />
       </div>
-      <div
-        style={{
-          textAlign: "left",
-          paddingLeft: 20,
-          paddingTop: 20,
-          fontWeight: "bold",
-        }}
-      >
-        Dashboard
-      </div>
-      <div style={{ paddingTop: 40 }}>
+
+      <div style={{ paddingTop: 30 }}>
         <Items />
       </div>
-      <div style={{ paddingTop: 40, paddingBottom: 40 }}>
-        <Divider />
+      <div
+        style={{
+          paddingTop: 40,
+          paddingBottom: 40,
+          width: 250,
+        }}
+      >
+        <Divider variant="middle" />
       </div>
       <StatisticItems />
     </div>
