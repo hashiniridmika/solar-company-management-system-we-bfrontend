@@ -3,7 +3,7 @@ import { Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-export default function TopicDetails() {
+export default function TopicDetails({ name, content }) {
   return (
     <div>
       <Grid
@@ -15,7 +15,7 @@ export default function TopicDetails() {
       >
         <Grid item>
           <Typography sx={{ color: "#00C569", fontSize: 30, pl: 4 }}>
-            Product Details
+            {name}
           </Typography>
         </Grid>
 
@@ -43,12 +43,12 @@ export default function TopicDetails() {
           </Button>
         </Grid>
       </Grid>
-      <Grid item>
-        <Typography sx={{ pl: 4 }}>
-          Solar panels are those devices which are used to absorb the sun's rays
-          and convert them into electricity or heat. Description: A solar panel
-          is actually a collection of solar (or photovoltaic) cells, which can
-          be used to generate electricity through photovoltaic effect.
+      <Grid
+        item
+        sx={{ textAlign: "left", paddingTop: "10px", paddingRight: "15px" }}
+      >
+        <Typography sx={{ pl: 4, pb: 1, color: "#6D6D6D" }}>
+          {content}
         </Typography>
       </Grid>
     </div>

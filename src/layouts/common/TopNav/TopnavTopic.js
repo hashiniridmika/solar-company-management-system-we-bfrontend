@@ -1,10 +1,10 @@
 import React from "react";
 import TopicDetails from "../../../components/common/TopNav/TopnavTopic/TopicDetails";
 
-export default function TopnavTopic() {
+export default function TopnavTopic({ name, content }) {
   return (
     <div>
-      <TopicDetails />
+      <TopicDetails name={name} content={content} />
     </div>
   );
 }

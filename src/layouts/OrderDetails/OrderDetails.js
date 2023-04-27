@@ -3,7 +3,12 @@ import OrderTable from "../../components/OrderDetails/OrderTable";
 
 export default function OrderDetails() {
   return (
-    <div>
+    <div
+      style={{
+        paddingLeft: "40px",
+        paddingRight: "10px",
+      }}
+    >
       <OrderTable />
     </div>
   );

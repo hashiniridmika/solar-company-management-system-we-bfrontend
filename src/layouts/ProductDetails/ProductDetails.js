@@ -3,7 +3,7 @@ import ProductTable from "../../components/ProductDetails/ProductTable";
 
 export default function ProductDetails() {
   return (
-    <div>
+    <div style={{ paddingLeft: "40px", paddingRight: "10px" }}>
       <ProductTable />
     </div>
   );

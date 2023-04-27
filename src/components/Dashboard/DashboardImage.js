@@ -5,19 +5,22 @@ export default function DashboardImage() {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "flex-end",
-        backgroundColor: "#EBFAF3",
-        borderRadius: 14,
-        paddingBottom: 15,
+        position: "relative",
+        marginTop: "70px",
+        paddingLeft: "30px",
+        paddingRight: "30px",
       }}
     >
-      <div>
-        <img
-          src={DASHBOARD}
-          alt="DashboardImage"
-          style={{ width: "65%", paddingRight: 140 }}
-        />
+      <div
+        style={{
+          backgroundColor: "#EBFAF3",
+          borderRadius: 14,
+          paddingBottom: 5,
+          height: 200,
+        }}
+      ></div>
+      <div style={{ position: "absolute", top: "-23%", right: "10%" }}>
+        <img src={DASHBOARD} alt="DashboardImage" style={{ width: "90%" }} />
       </div>
     </div>
   );

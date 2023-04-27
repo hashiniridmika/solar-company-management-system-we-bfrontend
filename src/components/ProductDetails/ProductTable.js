@@ -1,4 +1,10 @@
 import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Grid,
   IconButton,
   Table,
@@ -8,8 +14,11 @@ import {
   TableRow,
 } from "@mui/material";
 import React from "react";
-import DeleteSharpIcon from "@mui/icons-material/Delete";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import AddNewProductButton from "../common/TopNav/AddNewProductButton";
+import AddNewProduct from "../../layouts/ProductDetails/AddNewProductDialogBox";
+import AddNewProductDialogBox from "../../layouts/ProductDetails/AddNewProductDialogBox";
 
 const rows = [
   {
@@ -60,8 +69,20 @@ const rows = [
 ];
 
 export default function BasicTable() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
+      <AddNewProductButton handleClickOpen={handleClickOpen} />
+
       <Table>
         <TableHead>
           <TableRow>
@@ -83,17 +104,16 @@ export default function BasicTable() {
               <TableCell>{row.rate}</TableCell>
               <TableCell>{row.catergory}</TableCell>
               <TableCell>{row.status}</TableCell>
-              <TableCell>{row.action}</TableCell>
               <TableCell>
-                <Grid container justifyContent="center">
+                <Grid container>
                   <Grid item>
                     <IconButton color="secondary">
-                      <EditOutlinedIcon style={{ color: "silver" }} />
+                      <EditOutlinedIcon style={{ color: "#989586" }} />
                     </IconButton>
                   </Grid>
                   <Grid item>
                     <IconButton color="primary">
-                      <DeleteSharpIcon style={{ color: "red" }} />
+                      <DeleteForeverIcon style={{ color: "#FAA281" }} />
                     </IconButton>
                   </Grid>
                 </Grid>
@@ -102,6 +122,19 @@ export default function BasicTable() {
           ))}
         </TableBody>
       </Table>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth="xl"
+        PaperProps={{
+          style: {
+            width: "55%",
+            height: "70%",
+          },
+        }}
+      >
+        <AddNewProductDialogBox />
+      </Dialog>
     </div>
   );
 }

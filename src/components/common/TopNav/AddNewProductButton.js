@@ -1,15 +1,15 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-export default function AddNewProductButton() {
+export default function AddNewProductButton({ handleClickOpen }) {
   return (
     <div
       style={{
         display: "flex",
         justifyContent: "flex-end",
         paddingTop: "1%",
-        paddingRight: "2.5%",
         paddingBottom: "1%",
+        paddingRight: "20px",
       }}
     >
       <Button
@@ -27,6 +27,7 @@ export default function AddNewProductButton() {
             opacity: 0.5,
           },
         }}
+        onClick={handleClickOpen}
       >
         Add New
       </Button>

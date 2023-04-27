@@ -1,23 +1,24 @@
 import { Button } from "@mui/material";
 import React from "react";
 
-export default function Item({ info }) {
+export default function Item({ title, isActive }) {
   return (
     <div>
       <Button
         sx={{
-          textTransform: "none",
           width: 220,
           height: 50,
-          justifyContent: "flex-start",
-          color: "#868686",
-          ":hover": {
-            backgroundColor: "#E3FFE9",
-            color: "#047942",
-          },
+          textTransform: "none",
+          backgroundColor: isActive ? "#CCFCE5" : "",
+          color: isActive ? "#047942" : "#868686",
+          padding: 1,
+          textAlign: "left",
+          justifyContent: "left",
+          paddingLeft: "10px",
+          pointerEvents: isActive ? "none" : "auto",
         }}
       >
-        {info}
+        {title}
       </Button>
     </div>
   );
