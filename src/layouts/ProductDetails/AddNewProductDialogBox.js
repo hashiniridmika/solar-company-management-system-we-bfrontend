@@ -16,11 +16,17 @@ export default function AddNewProductDialogBox() {
         Audience by Adding Your Product to Our Diverse and Curated Collection.
         Start Selling Today!
       </Typography>
-      <Grid container>
-        <Grid item padding={2}>
-          <AddNewProductDialogBoxTextfield />
-          <AddNewProductDialogBoxTextfield />
-          <AddNewProductDialogBoxTextfield />
+      <Grid container justifyContent="space-between" alignItems="center">
+        <Grid item justifyContent={"flex-start"}>
+          <Grid container>
+            <AddNewProductDialogBoxTextfield
+              name="Product Name"
+              placeholder="Enter Product Name"
+            />
+          </Grid>
+        </Grid>
+        <Grid item justifyContent={"flex-end"}>
+          <Grid container></Grid>
         </Grid>
       </Grid>
     </div>

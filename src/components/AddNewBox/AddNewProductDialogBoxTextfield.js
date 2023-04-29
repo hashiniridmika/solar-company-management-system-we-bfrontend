@@ -1,10 +1,15 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 
-export default function AddNewProductDialogBoxTextfield() {
+export default function AddNewProductDialogBoxTextfield({ name, placeholder }) {
   return (
-    <div>
-      <TextField variant="outlined" />
+    <div style={{ paddingLeft: "10%" }}>
+      <Typography color="#000000">{name}</Typography>
+      <TextField
+        sx={{ borderRadius: 10 }}
+        placeholder={placeholder}
+        size="small"
+      />
     </div>
   );
 }

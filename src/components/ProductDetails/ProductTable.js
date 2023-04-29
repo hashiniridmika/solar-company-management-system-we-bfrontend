@@ -1,10 +1,10 @@
 import {
-  Button,
+  // Button,
   Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
+  // DialogActions,
+  // DialogContent,
+  // DialogContentText,
+  // DialogTitle,
   Grid,
   IconButton,
   Table,
@@ -17,7 +17,6 @@ import React from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AddNewProductButton from "../common/TopNav/AddNewProductButton";
-import AddNewProduct from "../../layouts/ProductDetails/AddNewProductDialogBox";
 import AddNewProductDialogBox from "../../layouts/ProductDetails/AddNewProductDialogBox";
 
 const rows = [
