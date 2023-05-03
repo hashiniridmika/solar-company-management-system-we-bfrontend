@@ -14,11 +14,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<LoginPage />} />
-          <Route path="/Dashboard" element={<Dashboard />}></Route>
-          <Route path="/Product" element={<Product />}></Route>
-          <Route path="/Order" element={<Order />}></Route>
-          <Route path="/Stock" element={<Stock />}></Route>
-          <Route path="/User" element={<User />}></Route>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/product" element={<Product />}></Route>
+          <Route path="/order" element={<Order />}></Route>
+          <Route path="/stock" element={<Stock />}></Route>
+          <Route path="/user" element={<User />}></Route>
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

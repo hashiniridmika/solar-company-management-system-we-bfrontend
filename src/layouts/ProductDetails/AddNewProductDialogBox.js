@@ -1,6 +1,8 @@
 import { Grid, Typography } from "@mui/material";
 import React from "react";
-import AddNewProductDialogBoxTextfield from "../../components/AddNewBox/AddNewProductDialogBoxTextfield";
+import AddNewDialogBoxTextfield from "../../components/AddNewBox/AddNewDialogBoxTextfield";
+import AddNewDialogBoxButton from "../../components/AddNewBox/AddNewDialogBoxButton";
+import AddNewProductDialogBooxSelectBox from "../../components/AddNewBox/AddNewProductDialogBooxSelectBox";
 
 export default function AddNewProductDialogBox() {
   return (
@@ -16,17 +18,36 @@ export default function AddNewProductDialogBox() {
         Audience by Adding Your Product to Our Diverse and Curated Collection.
         Start Selling Today!
       </Typography>
-      <Grid container justifyContent="space-between" alignItems="center">
-        <Grid item justifyContent={"flex-start"}>
+      <Grid container spacing={1}>
+        <Grid item xs={6}>
+          <AddNewDialogBoxTextfield
+            name="Product Name"
+            placeholder="Enter Product Name"
+          />
+          <AddNewDialogBoxTextfield
+            name="Description"
+            placeholder="Enter Description"
+            rows={4}
+          />
           <Grid container>
-            <AddNewProductDialogBoxTextfield
-              name="Product Name"
-              placeholder="Enter Product Name"
-            />
+            <Grid item xs={6}>
+              <AddNewDialogBoxTextfield
+                name="Price(LKR)"
+                placeholder="Enter Price"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <AddNewDialogBoxTextfield
+                name="Stock Count"
+                placeholder="Enter Count"
+              />
+            </Grid>
           </Grid>
         </Grid>
-        <Grid item justifyContent={"flex-end"}>
-          <Grid container></Grid>
+        <Grid item xs={6}>
+          <AddNewProductDialogBooxSelectBox />
+          <AddNewDialogBoxTextfield />
+          <AddNewDialogBoxButton />
         </Grid>
       </Grid>
     </div>

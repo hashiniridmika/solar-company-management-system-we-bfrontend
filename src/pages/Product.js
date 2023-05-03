@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CommonLayout from "../layouts/common/CommonLayout";
 import ProductDetails from "../layouts/ProductDetails/ProductDetails";
 import TopnavTopic from "../layouts/common/TopNav/TopnavTopic";
 import TopSearch from "../layouts/common/TopNav/TopSearch";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProductitems } from "../store/actions/productitemAction";
 
 export default function Product() {
+  const dispatch = useDispatch();
+
+  const { allProductitemList } = useSelector(
+    (store) => store.productItemReducer
+  );
+
+  useEffect(() => {
+    if (allProductitemList.length === 0) {
+      dispatch(getAllProductitems());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <CommonLayout>

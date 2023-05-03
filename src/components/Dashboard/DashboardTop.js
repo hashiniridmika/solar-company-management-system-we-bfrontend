@@ -21,7 +21,7 @@ export default function DashboardTop() {
       >
         <Grid item>
           <Typography sx={{ color: "#00C569", fontSize: 30, pl: 4 }}>
-            Dashboard
+            DASHBOARD
           </Typography>
         </Grid>
 

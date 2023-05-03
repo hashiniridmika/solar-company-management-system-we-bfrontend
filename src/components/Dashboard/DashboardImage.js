@@ -6,7 +6,7 @@ export default function DashboardImage() {
     <div
       style={{
         position: "relative",
-        marginTop: "70px",
+        marginTop: "50px",
         paddingLeft: "30px",
         paddingRight: "30px",
       }}

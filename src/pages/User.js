@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CommonLayout from "../layouts/common/CommonLayout";
 import UserDetails from "../layouts/UserDetails/UserDetails";
 import TopnavTopic from "../layouts/common/TopNav/TopnavTopic";
 import TopSearch from "../layouts/common/TopNav/TopSearch";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllAgents } from "../store/actions/agentAction";
 
 export default function User() {
+  const dispatch = useDispatch();
+
+  const { allAgentList } = useSelector((store) => store.agentReducer);
+
+  useEffect(() => {
+    if (allAgentList.length === 0) {
+      dispatch(getAllAgents());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <CommonLayout>

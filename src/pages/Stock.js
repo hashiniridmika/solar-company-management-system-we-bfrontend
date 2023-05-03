@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CommonLayout from "../layouts/common/CommonLayout";
 import StockDetails from "../layouts/StockDetails/StockDetails";
 import TopnavTopic from "../layouts/common/TopNav/TopnavTopic";
 import TopSearch from "../layouts/common/TopNav/TopSearch";
+import { getAllStocks } from "../store/actions/stockAction";
 
 export default function Stock() {
+  const dispatch = useDispatch();
+
+  const { allStockList } = useSelector((store) => store.stockReducer);
+
+  useEffect(() => {
+    if (allStockList.length === 0) {
+      dispatch(getAllStocks());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <CommonLayout>

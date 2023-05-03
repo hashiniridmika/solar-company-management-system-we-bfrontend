@@ -1,10 +1,5 @@
 import {
-  Button,
   Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   Grid,
   IconButton,
   Table,
@@ -13,46 +8,22 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AddNewProductButton from "../common/TopNav/AddNewProductButton";
-
-const rows = [
-  {
-    id: "1010",
-    name: "Oliver R.",
-    username: "oliver",
-    email: "oliver@gmail.com",
-    mobileNumber: "+94778978876",
-    companyName: "Solar Tech pvt Lmt.",
-    companyAddress: "Solar Tech,No 74/Colombo 06",
-    action: " ",
-  },
-  {
-    id: "1010",
-    name: "Oliver R.",
-    username: "oliver",
-    email: "oliver@gmail.com",
-    mobileNumber: "+94778978876",
-    companyName: "Solar Tech pvt Lmt.",
-    companyAddress: "Solar Tech,No 74/Colombo 06",
-    action: " ",
-  },
-  {
-    id: "1010",
-    name: "Oliver R.",
-    username: "oliver",
-    email: "oliver@gmail.com",
-    mobileNumber: "+94778978876",
-    companyName: "Solar Tech pvt Lmt.",
-    companyAddress: "Solar Tech,No 74/Colombo 06",
-    action: " ",
-  },
-];
+import { useSelector } from "react-redux";
+import AddNewUserDialogBox from "../../layouts/UserDetails/AddNewUserDialogBox";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 export default function BasicTable() {
   const [open, setOpen] = React.useState(false);
+  const { allAgentList } = useSelector((store) => store.agentReducer);
+
+  const [page, setPage] = useState(1);
+  const rowsPerPage = 5;
+  const pageCount = Math.ceil(allAgentList.length / rowsPerPage);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -61,6 +32,12 @@ export default function BasicTable() {
   const handleClose = () => {
     setOpen(false);
   };
+  const handleChangePage = (event, value) => {
+    setPage(value);
+  };
+
+  const startIndex = (page - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
 
   return (
     <div>
@@ -71,9 +48,9 @@ export default function BasicTable() {
             <TableCell style={{ fontWeight: "bold" }}>Agent ID</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>Agent Name</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>Username</TableCell>
+            <TableCell style={{ fontWeight: "bold" }}>Password</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>Email Address</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>Mobile Number</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Company Name</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>
               Company Address
             </TableCell>
@@ -81,15 +58,17 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, key) => (
+          {allAgentList.slice(startIndex, endIndex).map((val, key) => (
             <TableRow key={key} hover>
-              <TableCell>{row.id}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.username}</TableCell>
-              <TableCell>{row.email}</TableCell>
-              <TableCell>{row.mobileNumber}</TableCell>
-              <TableCell>{row.companyName}</TableCell>
-              <TableCell>{row.companyAddress}</TableCell>
+              <TableCell>
+                {val._id.slice(-7).padStart(val._id.length)}
+              </TableCell>
+              <TableCell>{val.agentName}</TableCell>
+              <TableCell>{val.username}</TableCell>
+              <TableCell>{val.password}</TableCell>
+              <TableCell>{val.emailAddress}</TableCell>
+              <TableCell>{val.mobileNumber}</TableCell>
+              <TableCell>{val.companyAddress}</TableCell>
               <TableCell>
                 <Grid container>
                   <Grid item>
@@ -108,27 +87,37 @@ export default function BasicTable() {
           ))}
         </TableBody>
       </Table>
+      <Stack
+        direction="row"
+        spacing={1}
+        sx={{ mt: 2, justifyContent: "flex-end", pr: 2 }}
+      >
+        <Pagination
+          count={pageCount}
+          page={page}
+          onChange={handleChangePage}
+          sx={{
+            "& .Mui-selected": {
+              color: "#00C569",
+            },
+            mt: 1,
+            justifyContent: "flex-end",
+            pr: 2,
+          }}
+        />
+      </Stack>
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        maxWidth="xl"
+        PaperProps={{
+          style: {
+            width: "55%",
+            height: "75%",
+          },
+        }}
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
-          </Button>
-        </DialogActions>
+        <AddNewUserDialogBox />
       </Dialog>
     </div>
   );

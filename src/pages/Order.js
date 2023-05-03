@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OrderDetails from "../layouts/OrderDetails/OrderDetails";
 import CommonLayout from "../layouts/common/CommonLayout";
 import TopnavTopic from "../layouts/common/TopNav/TopnavTopic";
+import { useDispatch, useSelector } from "react-redux";
 import TopSearch from "../layouts/common/TopNav/TopSearch";
+import { getAllOrders } from "../store/actions/orderAction";
 
 export default function Order() {
+  const dispatch = useDispatch();
+
+  const { allOrderList } = useSelector((store) => store.orderReducer);
+
+  useEffect(() => {
+    if (allOrderList.length === 0) {
+      dispatch(getAllOrders());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <CommonLayout>
