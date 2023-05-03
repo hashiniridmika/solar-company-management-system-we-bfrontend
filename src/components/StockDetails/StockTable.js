@@ -14,21 +14,32 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import EditStockDialogBox from "../../layouts/StockDetails/EditStockDialogBox";
+import DeleteStockDialogBox from "../../layouts/StockDetails/DeleteStockDialogBox";
 
 export default function BasicTable() {
-  const [open, setOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { allStockList } = useSelector((store) => store.stockReducer);
 
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
   const pageCount = Math.ceil(allStockList.length / rowsPerPage);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpen = (type) => {
+    if (type === "edit") {
+      setIsEditOpen(true);
+    } else if (type === "delete") {
+      setIsDeleteOpen(true);
+    }
+    setIsDialogOpen(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setIsDialogOpen(false);
+    setIsEditOpen(false);
+    setIsDeleteOpen(false);
   };
   const handleChangePage = (event, value) => {
     setPage(value);
@@ -68,12 +79,18 @@ export default function BasicTable() {
               <TableCell>
                 <Grid container>
                   <Grid item>
-                    <IconButton color="secondary" onClick={handleClickOpen}>
+                    <IconButton
+                      color="secondary"
+                      onClick={() => handleClickOpen("edit")}
+                    >
                       <EditOutlinedIcon style={{ color: "#989586" }} />
                     </IconButton>
                   </Grid>
                   <Grid item>
-                    <IconButton color="primary">
+                    <IconButton
+                      color="primary"
+                      onClick={() => handleClickOpen("delete")}
+                    >
                       <DeleteForeverIcon style={{ color: "#FAA281" }} />
                     </IconButton>
                   </Grid>
@@ -103,16 +120,28 @@ export default function BasicTable() {
         />
       </Stack>
       <Dialog
-        open={open}
+        open={isDialogOpen}
+        keepMounted
         onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
         maxWidth="xl"
         PaperProps={{
           style: {
-            width: "50%",
-            height: "45%",
+            width: "45%",
+            height: "35%",
           },
         }}
-      ></Dialog>
+      >
+        {isEditOpen && (
+          <EditStockDialogBox isOpen={isEditOpen} setIsOpen={setIsEditOpen} />
+        )}
+        {isDeleteOpen && (
+          <DeleteStockDialogBox
+            isOpen={isDeleteOpen}
+            setIsOpen={setIsDeleteOpen}
+          />
+        )}
+      </Dialog>
     </div>
   );
 }

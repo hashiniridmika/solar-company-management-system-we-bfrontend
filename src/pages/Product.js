@@ -17,8 +17,8 @@ export default function Product() {
     if (allProductitemList.length === 0) {
       dispatch(getAllProductitems());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [allProductitemList.length, dispatch]);
+
   return (
     <div>
       <CommonLayout>

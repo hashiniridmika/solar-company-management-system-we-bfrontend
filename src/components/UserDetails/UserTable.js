@@ -16,22 +16,23 @@ import { useSelector } from "react-redux";
 import AddNewUserDialogBox from "../../layouts/UserDetails/AddNewUserDialogBox";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import EditUserDialogBox from "../../layouts/UserDetails/EditUserDialogBox";
+import DeleteUserDialogBox from "../../layouts/UserDetails/DeleteUserDialogBox";
 
 export default function BasicTable() {
-  const [open, setOpen] = React.useState(false);
+  const [openAdd, setOpenAdd] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
   const { allAgentList } = useSelector((store) => store.agentReducer);
 
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
   const pageCount = Math.ceil(allAgentList.length / rowsPerPage);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpenAdd = () => {
+    setOpenAdd(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
   const handleChangePage = (event, value) => {
     setPage(value);
   };
@@ -41,7 +42,7 @@ export default function BasicTable() {
 
   return (
     <div>
-      <AddNewProductButton handleClickOpen={handleClickOpen} />
+      <AddNewProductButton handleClickOpen={handleClickOpenAdd} />
       <Table>
         <TableHead>
           <TableRow>
@@ -72,12 +73,21 @@ export default function BasicTable() {
               <TableCell>
                 <Grid container>
                   <Grid item>
-                    <IconButton color="secondary">
+                    <IconButton
+                      color="secondary"
+                      onClick={() => {
+                        setOpenEdit(true);
+                      }}
+                    >
                       <EditOutlinedIcon style={{ color: "#989586" }} />
                     </IconButton>
-                  </Grid>
-                  <Grid item>
-                    <IconButton color="primary">
+
+                    <IconButton
+                      color="primary"
+                      onClick={() => {
+                        setOpenDelete(true);
+                      }}
+                    >
                       <DeleteForeverIcon style={{ color: "#FAA281" }} />
                     </IconButton>
                   </Grid>
@@ -107,8 +117,12 @@ export default function BasicTable() {
         />
       </Stack>
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={openAdd}
+        keepMounted
+        onClose={() => {
+          setOpenAdd(false);
+        }}
+        aria-describedby="alert-dialog-slide-description"
         maxWidth="xl"
         PaperProps={{
           style: {
@@ -117,7 +131,37 @@ export default function BasicTable() {
           },
         }}
       >
-        <AddNewUserDialogBox />
+        {openAdd && (
+          <AddNewUserDialogBox isOpen={openAdd} setIsOpen={setOpenAdd} />
+        )}
+      </Dialog>
+
+      <Dialog
+        open={openEdit}
+        onClose={() => setOpenEdit(false)}
+        maxWidth="xl"
+        PaperProps={{
+          style: {
+            width: "55%",
+            height: "75%",
+          },
+        }}
+      >
+        <EditUserDialogBox isOpen={openEdit} setIsOpen={setOpenEdit} />
+      </Dialog>
+
+      <Dialog
+        open={openDelete}
+        onClose={() => setOpenDelete(false)}
+        maxWidth="xl"
+        PaperProps={{
+          style: {
+            width: "45%",
+            height: "35%",
+          },
+        }}
+      >
+        <DeleteUserDialogBox isOpen={openDelete} setIsOpen={setOpenDelete} />
       </Dialog>
     </div>
   );

@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 import AddNewDialogBoxTextfield from "../../components/AddNewBox/AddNewDialogBoxTextfield";
-import EditUpdateButton from "../../components/EditBox/EditUpdateButton";
+import EditUpdateButton from "../../components/StockBox/EditUpdateButton";
 
 export default function EditStockDialogBox() {
   return (
@@ -13,7 +13,7 @@ export default function EditStockDialogBox() {
         align="center"
         sx={{ padding: 1.5, fontSize: 13, color: "#6D6D6D" }}
       >
-        Edit stock details with input fields and update button
+        Edit stock page allows you to update existing stock informations.
       </Typography>
 
       <Grid container>
@@ -33,7 +33,7 @@ export default function EditStockDialogBox() {
           margin: "auto",
           textAlign: "center",
           justifyContent: "center",
-          paddingTop: "35px",
+          paddingTop: "28px",
         }}
       >
         <EditUpdateButton />

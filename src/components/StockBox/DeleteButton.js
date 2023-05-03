@@ -20,7 +20,7 @@ export default function DeleteButton() {
           },
         }}
       >
-        Delete
+        YES
       </Button>
     </div>
   );

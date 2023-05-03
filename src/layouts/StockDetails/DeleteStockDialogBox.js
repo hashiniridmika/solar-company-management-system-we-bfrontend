@@ -7,13 +7,13 @@ export default function DeleteStockDialogBox() {
   return (
     <div>
       <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
-        Delete Stock
+        Do You Want Delete This Stock?
       </Typography>
       <Typography
         align="center"
         sx={{ padding: 1.5, fontSize: 15, color: "#6D6D6D" }}
       >
-        Are you sure delete this product. OK!
+        Are you sure?
       </Typography>
 
       <div
