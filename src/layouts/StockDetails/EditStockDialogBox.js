@@ -18,13 +18,13 @@ export default function EditStockDialogBox() {
 
       <Grid container>
         <Grid item xs={4}>
-          <AddNewDialogBoxTextfield name="Category" />
+          <AddNewDialogBoxTextfield fieldname="Category" />
         </Grid>
         <Grid item xs={4}>
-          <AddNewDialogBoxTextfield name="Product Name" />
+          <AddNewDialogBoxTextfield fieldname="Product Name" />
         </Grid>
         <Grid item xs={4}>
-          <AddNewDialogBoxTextfield name="Stock Count" />
+          <AddNewDialogBoxTextfield fieldname="Stock Count" />
         </Grid>
       </Grid>
       <Grid
