@@ -4,6 +4,8 @@ export const GET_ALL_AGENTS_LOADING = "GET_ALL_AGENTS_LOADING";
 export const GET_ALL_AGENTS_SUCESS = "GET_ALL_AGENTS_SUCESS";
 export const GET_ALL_AGENTS_FAIL = "GET_ALL_AGENTS_FAIL";
 
+export const SET_USER_SELECTED_AGENT = "SET_USER_SELECTED_AGENT";
+
 export const getAllAgents = () => {
   return (dispatch) => {
     dispatch({ type: GET_ALL_AGENTS_LOADING });
@@ -17,5 +19,11 @@ export const getAllAgents = () => {
         console.log(e);
         dispatch({ type: GET_ALL_AGENTS_FAIL });
       });
+  };
+};
+
+export const setUserSelectedAgent = (user) => {
+  return (dispatch) => {
+    dispatch({ type: SET_USER_SELECTED_AGENT, payload: user });
   };
 };
