@@ -1,7 +1,5 @@
 import {
   Dialog,
-  Grid,
-  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -9,24 +7,23 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useState } from "react";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import AddNewProductButton from "../common/TopNav/AddNewProductButton";
 import { useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import OrderDetailsDialogBox from "../../layouts/OrderDetails/OrderDetailsDialogBox";
 
 export default function BasicTable() {
   const [open, setOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = React.useState(null);
   const { allOrderList } = useSelector((store) => store.orderReducer);
 
   const [page, setPage] = useState(1);
-  const rowsPerPage = 5;
+  const rowsPerPage = 8;
   const pageCount = Math.ceil(allOrderList.length / rowsPerPage);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -39,7 +36,6 @@ export default function BasicTable() {
 
   return (
     <div>
-      <AddNewProductButton handleClickOpen={handleClickOpen} />
       <Table>
         <TableHead>
           <TableRow>
@@ -49,30 +45,37 @@ export default function BasicTable() {
             <TableCell style={{ fontWeight: "bold" }}>
               Total Bill(LKR)
             </TableCell>
+            <TableCell style={{ fontWeight: "bold" }}>Payment Type</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>Status</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {allOrderList.slice(startIndex, endIndex).map((val, key) => (
-            <TableRow key={key} hover>
+            <TableRow
+              key={key}
+              hover
+              onClick={() => {
+                setSelectedRow(val);
+                handleClickOpen();
+              }}
+              style={
+                selectedRow === val
+                  ? { backgroundColor: "#D7EBFF", color: "white" }
+                  : {}
+              }
+            >
               <TableCell>
-                {" "}
                 {val._id.slice(-7).padStart(val._id.length)}
               </TableCell>
               <TableCell>{val.orderBy.agentName}</TableCell>
               <TableCell>{val.orderedDateandTime}</TableCell>
               <TableCell>{val.billValue}</TableCell>
-              <TableCell> </TableCell>
-              <TableCell>
-                <Grid container>
-                  <Grid item>
-                    <IconButton color="primary">
-                      <DeleteForeverIcon style={{ color: "#FAA281" }} />
-                    </IconButton>
-                  </Grid>
-                </Grid>
+              <TableCell
+                style={{ color: val.paymentType === "COD" ? "red" : "green" }}
+              >
+                {val.paymentType}
               </TableCell>
+              <TableCell></TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -99,9 +102,16 @@ export default function BasicTable() {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      ></Dialog>
+        maxWidth="xl"
+        PaperProps={{
+          style: {
+            width: "55%",
+            height: "55%",
+          },
+        }}
+      >
+        <OrderDetailsDialogBox />
+      </Dialog>
     </div>
   );
 }
