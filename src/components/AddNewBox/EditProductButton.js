@@ -3,13 +3,15 @@ import { Button } from "@mui/material";
 
 export default function EditProductButton() {
   return (
-    <div>
+    <div
+      style={{ paddingLeft: "20px", paddingTop: "95px", paddingRight: "20px" }}
+    >
       <Button
         variant="contained"
         sx={{
           backgroundColor: "#00C569",
           textTransform: "none",
-          width: 150,
+          width: 278,
           "&:hover": {
             backgroundColor: "#00C569", // Change hover background color
             opacity: 0.8,
