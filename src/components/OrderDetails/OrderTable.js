@@ -60,7 +60,7 @@ export default function BasicTable() {
               }}
               style={
                 selectedRow === val
-                  ? { backgroundColor: "#D7EBFF", color: "white" }
+                  ? { backgroundColor: "#E3FFE9", color: "white" }
                   : {}
               }
             >
