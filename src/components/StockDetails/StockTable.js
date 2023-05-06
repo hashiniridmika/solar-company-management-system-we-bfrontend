@@ -21,6 +21,8 @@ export default function BasicTable() {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
+
   const { allStockList } = useSelector((store) => store.stockReducer);
 
   const [page, setPage] = useState(1);
@@ -47,6 +49,7 @@ export default function BasicTable() {
 
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
+
   return (
     <div>
       <Table>
@@ -62,7 +65,18 @@ export default function BasicTable() {
         </TableHead>
         <TableBody>
           {allStockList.slice(startIndex, endIndex).map((val, key) => (
-            <TableRow key={key} hover>
+            <TableRow
+              key={key}
+              hover
+              onClick={() => {
+                setSelectedRow(val);
+              }}
+              style={
+                selectedRow === val
+                  ? { backgroundColor: "#E3FFE9", color: "white" }
+                  : {}
+              }
+            >
               <TableCell>
                 {val.item._id.slice(-5).padStart(val._id.length)}
               </TableCell>
