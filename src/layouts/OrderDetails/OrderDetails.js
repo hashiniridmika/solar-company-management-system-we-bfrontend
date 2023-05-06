@@ -6,7 +6,7 @@ export default function OrderDetails() {
     <div
       style={{
         paddingLeft: "40px",
-        paddingRight: "10px",
+        paddingRight: "40px",
       }}
     >
       <OrderTable />
