@@ -10,13 +10,13 @@ export default function DashboardCategoryAddButton() {
   };
 
   return (
-    <div>
+    <div style={{ paddingLeft: "15px" }}>
       <Button
         variant="outlined"
         onClick={handleClick}
         sx={{
           color: isClicked ? "#3d8c40" : "#3d8c40",
-          borderColor: isClicked ? "#00C569" : "#00C569",
+          borderColor: isClicked ? "#61F3CB" : "#61F3CB",
           borderRadius: 2,
           "&:hover": {
             color: "#00C569",
