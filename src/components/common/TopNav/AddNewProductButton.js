@@ -9,7 +9,6 @@ export default function AddNewProductButton({ handleClickOpen }) {
         justifyContent: "flex-end",
         paddingTop: "1%",
         paddingBottom: "1%",
-        paddingRight: "20px",
       }}
     >
       <Button
