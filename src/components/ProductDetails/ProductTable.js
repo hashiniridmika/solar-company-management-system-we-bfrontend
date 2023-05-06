@@ -12,17 +12,21 @@ import React, { useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AddNewProductButton from "../common/TopNav/AddNewProductButton";
-import AddNewProductDialogBox from "../../layouts/ProductDetails/AddNewProductDialogBox";
 import { useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import AddNewProductDialogBox from "../../layouts/ProductDetails/AddNewProductDialogBox";
 import EditProductDialogBox from "../../layouts/ProductDetails/EditProductDialogBox";
 import DeleteProductDialogBox from "../../layouts/ProductDetails/DeleteProductDialogBox";
+import ViewProductFeedbackDialogBox from "../../layouts/ProductDetails/ViewProductFeedbackDialogBox";
+import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 
 export default function BasicTable() {
   const [openAdd, setOpenAdd] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
+  const [openFeedback, setOpenFeedback] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
   const { allProductitemList } = useSelector(
     (store) => store.productItemReducer
   );
@@ -60,7 +64,18 @@ export default function BasicTable() {
         </TableHead>
         <TableBody>
           {allProductitemList.slice(startIndex, endIndex).map((val, key) => (
-            <TableRow key={key} hover>
+            <TableRow
+              key={key}
+              hover
+              onClick={() => {
+                setSelectedRow(val);
+              }}
+              style={
+                selectedRow === val
+                  ? { backgroundColor: "#E3FFE9", color: "white" }
+                  : {}
+              }
+            >
               <TableCell>
                 {val._id.slice(-5).padStart(val._id.length)}
               </TableCell>
@@ -71,6 +86,16 @@ export default function BasicTable() {
               <TableCell>{val.category.categoryName}</TableCell>
               <TableCell>
                 <Grid container>
+                  <Grid item>
+                    <IconButton>
+                      <ChatOutlinedIcon
+                        style={{ color: "#6BC8A3" }}
+                        onClick={() => {
+                          setOpenFeedback(true);
+                        }}
+                      />
+                    </IconButton>
+                  </Grid>
                   <Grid item>
                     <IconButton color="secondary">
                       <EditOutlinedIcon
@@ -162,6 +187,22 @@ export default function BasicTable() {
         }}
       >
         <DeleteProductDialogBox isOpen={openDelete} setIsOpen={setOpenDelete} />
+      </Dialog>
+      <Dialog
+        open={openFeedback}
+        onClose={() => setOpenFeedback(false)}
+        maxWidth="xl"
+        PaperProps={{
+          style: {
+            width: "60%",
+            height: "60%",
+          },
+        }}
+      >
+        <ViewProductFeedbackDialogBox
+          isOpen={openFeedback}
+          setIsOpen={setOpenFeedback}
+        />
       </Dialog>
     </div>
   );
