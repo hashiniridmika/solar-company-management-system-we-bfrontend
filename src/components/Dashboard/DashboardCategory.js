@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 
-export default function DashboardCategory() {
+export default function DashboardCategory({ buttonName }) {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -9,21 +9,23 @@ export default function DashboardCategory() {
   };
 
   return (
-    <div>
+    <div style={{ paddingLeft: "30px" }}>
       <Button
-        variant="outlined"
         onClick={handleClick}
         sx={{
-          color: isClicked ? "#3d8c40" : "#3d8c40",
+          color: isClicked ? "#FFFFFF" : "#FFFFFF",
           borderColor: isClicked ? "#00C569" : "#00C569",
+          backgroundColor: "#00C569",
+          textTransform: "none",
           borderRadius: 2,
           "&:hover": {
-            color: "#87ab69",
+            color: "#000000",
             borderColor: "#87ab69",
           },
+          width: 135,
         }}
       >
-        Category
+        {buttonName}
       </Button>
     </div>
   );
