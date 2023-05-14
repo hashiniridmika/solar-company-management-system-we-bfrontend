@@ -43,7 +43,7 @@ export const updateAgent = (user) => {
       .post("http://localhost:5002/agent/update", { user })
       .then((response) => {
         console.log(response.data);
-        dispatch({ type: UPDATE_AGENTS_SUCESS, payload: response.data.agent });
+        dispatch({ type: UPDATE_AGENTS_SUCESS, payload: response.data.user });
       })
       .catch((e) => {
         console.log(e);
