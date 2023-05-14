@@ -1,11 +1,12 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-export default function EditUpdateButton() {
+export default function EditUpdateButton({ handleOnClick }) {
   return (
     <div>
       <Button
         variant="contained"
+        onClick={handleOnClick}
         sx={{
           backgroundColor: "#00C569",
           textTransform: "none",
