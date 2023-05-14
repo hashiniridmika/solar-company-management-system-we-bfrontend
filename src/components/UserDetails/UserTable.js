@@ -8,22 +8,33 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AddNewProductButton from "../common/TopNav/AddNewProductButton";
-import { useSelector } from "react-redux";
-import AddNewUserDialogBox from "../../layouts/UserDetails/AddNewUserDialogBox";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import AddNewUserDialogBox from "../../layouts/UserDetails/AddNewUserDialogBox";
 import EditUserDialogBox from "../../layouts/UserDetails/EditUserDialogBox";
 import DeleteUserDialogBox from "../../layouts/UserDetails/DeleteUserDialogBox";
 
+import {
+  setUserSelectedAgent,
+  getAllAgents,
+  clearAgentUpdateStatus,
+} from "../../store/actions/agentAction";
+
 export default function BasicTable() {
+  const dispatch = useDispatch();
   const [openAdd, setOpenAdd] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
-  const { allAgentList } = useSelector((store) => store.agentReducer);
+  const [selectedRow, setSelectedRow] = useState(null);
+
+  const { allAgentList, agentUpdateStatus } = useSelector(
+    (store) => store.agentReducer
+  );
 
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
@@ -31,11 +42,22 @@ export default function BasicTable() {
 
   const handleClickOpenAdd = () => {
     setOpenAdd(true);
+    dispatch(clearAgentUpdateStatus());
   };
 
   const handleChangePage = (event, value) => {
     setPage(value);
   };
+
+  const setvalue = (val) => {
+    dispatch(setUserSelectedAgent(val));
+  };
+
+  useEffect(() => {
+    if (agentUpdateStatus === "completed") {
+      dispatch(getAllAgents());
+    }
+  }, [dispatch, agentUpdateStatus]);
 
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
@@ -60,7 +82,18 @@ export default function BasicTable() {
         </TableHead>
         <TableBody>
           {allAgentList.slice(startIndex, endIndex).map((val, key) => (
-            <TableRow key={key} hover>
+            <TableRow
+              key={key}
+              hover
+              onClick={() => {
+                setSelectedRow(val);
+              }}
+              style={
+                selectedRow === val
+                  ? { backgroundColor: "#E3FFE9", color: "white" }
+                  : {}
+              }
+            >
               <TableCell>
                 {val._id.slice(-7).padStart(val._id.length)}
               </TableCell>
@@ -77,6 +110,7 @@ export default function BasicTable() {
                       color="secondary"
                       onClick={() => {
                         setOpenEdit(true);
+                        setvalue(val);
                       }}
                     >
                       <EditOutlinedIcon style={{ color: "#989586" }} />
