@@ -30,7 +30,6 @@ const agentReducer = (state = inisialState, action) => {
     case Actions.SET_USER_SELECTED_AGENT:
       return { ...state, userSelectedAgent: action.payload };
 
-    //update
     case Actions.UPDATE_AGENTS_SUCESS:
       return { ...state, agentUpdateStatus: "completed" };
 
