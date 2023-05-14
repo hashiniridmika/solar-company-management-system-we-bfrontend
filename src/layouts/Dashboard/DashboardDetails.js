@@ -23,7 +23,7 @@ export default function DashboardDetails() {
         <Typography
           sx={{
             color: "#00C569",
-            fontSize: 30,
+            fontSize: 28,
             pl: 4,
             pt: 3,
           }}
@@ -54,7 +54,7 @@ export default function DashboardDetails() {
         <Typography
           sx={{
             color: "#00C569",
-            fontSize: 30,
+            fontSize: 28,
             pl: 4,
             pt: 3,
           }}
