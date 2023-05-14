@@ -8,22 +8,32 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import EditStockDialogBox from "../../layouts/StockDetails/EditStockDialogBox";
 import DeleteStockDialogBox from "../../layouts/StockDetails/DeleteStockDialogBox";
 
+import {
+  setUserSelectedStock,
+  getAllStocks,
+} from "../../store/actions/stockAction";
+
 export default function BasicTable() {
+  const dispatch = useDispatch();
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const { allStockList } = useSelector((store) => store.stockReducer);
+  const { allStockList, userSelectedStock } = useSelector(
+    (store) => store.stockReducer
+  );
+
+  console.log(userSelectedStock);
 
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
@@ -46,6 +56,13 @@ export default function BasicTable() {
   const handleChangePage = (event, value) => {
     setPage(value);
   };
+  const setvalue = (val) => {
+    dispatch(setUserSelectedStock(val));
+  };
+
+  useEffect(() => {
+    dispatch(getAllStocks());
+  }, [dispatch]);
 
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
@@ -56,7 +73,7 @@ export default function BasicTable() {
         <TableHead>
           <TableRow>
             <TableCell style={{ fontWeight: "bold" }}>Product ID</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Catergory</TableCell>
+            <TableCell style={{ fontWeight: "bold" }}>Category</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>Product Name</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>Stock</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>Status</TableCell>
@@ -95,7 +112,10 @@ export default function BasicTable() {
                   <Grid item>
                     <IconButton
                       color="secondary"
-                      onClick={() => handleClickOpen("edit")}
+                      onClick={() => {
+                        handleClickOpen("edit");
+                        setvalue(val);
+                      }}
                     >
                       <EditOutlinedIcon style={{ color: "#989586" }} />
                     </IconButton>
