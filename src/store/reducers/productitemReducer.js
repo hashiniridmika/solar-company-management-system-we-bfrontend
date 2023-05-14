@@ -3,6 +3,8 @@ import * as Actions from "../actions/productitemAction";
 const inisialState = {
   getAllProductitemListLoading: "notStarted",
   allProductitemList: [],
+  userSelectedProductitem: {},
+  productitemUpdateStatus: "notstarted",
 };
 
 const productItemReducer = (state = inisialState, action) => {
@@ -24,6 +26,9 @@ const productItemReducer = (state = inisialState, action) => {
         getAllProductitemListLoading: "fail",
         allProductitemList: [],
       };
+
+    case Actions.SET_USER_SELECTED_PRODUCTITEM:
+      return { ...state, userSelectedProductitem: action.payload };
 
     default:
       return state;
