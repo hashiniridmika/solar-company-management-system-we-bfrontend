@@ -3,6 +3,8 @@ import * as Actions from "../actions/stockAction";
 const inisialState = {
   getAllStockListLoading: "notStarted",
   allStockList: [],
+  userSelectedStock: {},
+  stockUpdateStatus: "notstarted",
 };
 
 const stockReducer = (state = inisialState, action) => {
@@ -24,6 +26,9 @@ const stockReducer = (state = inisialState, action) => {
         getAllStockListLoading: "fail",
         allStockList: [],
       };
+
+    case Actions.SET_USER_SELECTED_STOCK:
+      return { ...state, userSelectedStock: action.payload };
 
     default:
       return state;
