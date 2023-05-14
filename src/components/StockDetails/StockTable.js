@@ -20,6 +20,8 @@ import DeleteStockDialogBox from "../../layouts/StockDetails/DeleteStockDialogBo
 import {
   setUserSelectedStock,
   getAllStocks,
+  clearStockUpdateStatus,
+  updateStock,
 } from "../../store/actions/stockAction";
 
 export default function BasicTable() {
@@ -29,7 +31,7 @@ export default function BasicTable() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const { allStockList, userSelectedStock } = useSelector(
+  const { allStockList, stockUpdateStatus, userSelectedStock } = useSelector(
     (store) => store.stockReducer
   );
 
@@ -46,6 +48,7 @@ export default function BasicTable() {
       setIsDeleteOpen(true);
     }
     setIsDialogOpen(true);
+    dispatch(clearStockUpdateStatus());
   };
 
   const handleClose = () => {
@@ -58,11 +61,19 @@ export default function BasicTable() {
   };
   const setvalue = (val) => {
     dispatch(setUserSelectedStock(val));
+    dispatch(clearStockUpdateStatus());
+  };
+
+  const handleOnClick = () => {
+    dispatch(updateStock(userSelectedStock));
+    handleClose();
   };
 
   useEffect(() => {
-    dispatch(getAllStocks());
-  }, [dispatch]);
+    if (stockUpdateStatus === "completed") {
+      dispatch(getAllStocks());
+    }
+  }, [dispatch, stockUpdateStatus]);
 
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
@@ -167,7 +178,11 @@ export default function BasicTable() {
         }}
       >
         {isEditOpen && (
-          <EditStockDialogBox isOpen={isEditOpen} setIsOpen={setIsEditOpen} />
+          <EditStockDialogBox
+            isOpen={isEditOpen}
+            setIsOpen={setIsEditOpen}
+            handleOnClick={handleOnClick}
+          />
         )}
         {isDeleteOpen && (
           <DeleteStockDialogBox
