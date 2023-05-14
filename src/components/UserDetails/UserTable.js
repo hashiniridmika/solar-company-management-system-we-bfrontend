@@ -23,6 +23,7 @@ import {
   setUserSelectedAgent,
   getAllAgents,
   clearAgentUpdateStatus,
+  updateAgent,
 } from "../../store/actions/agentAction";
 
 export default function BasicTable() {
@@ -32,7 +33,7 @@ export default function BasicTable() {
   const [openEdit, setOpenEdit] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const { allAgentList, agentUpdateStatus } = useSelector(
+  const { allAgentList, agentUpdateStatus, userSelectedAgent } = useSelector(
     (store) => store.agentReducer
   );
 
@@ -51,6 +52,12 @@ export default function BasicTable() {
 
   const setvalue = (val) => {
     dispatch(setUserSelectedAgent(val));
+    dispatch(clearAgentUpdateStatus());
+  };
+
+  const handleOnClick = () => {
+    dispatch(updateAgent(userSelectedAgent));
+    setOpenEdit(false);
   };
 
   useEffect(() => {
@@ -181,7 +188,11 @@ export default function BasicTable() {
           },
         }}
       >
-        <EditUserDialogBox isOpen={openEdit} setIsOpen={setOpenEdit} />
+        <EditUserDialogBox
+          isOpen={openEdit}
+          setIsOpen={setOpenEdit}
+          handleOnClick={handleOnClick}
+        />
       </Dialog>
 
       <Dialog
