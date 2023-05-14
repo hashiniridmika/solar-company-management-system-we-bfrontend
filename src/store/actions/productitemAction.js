@@ -1,8 +1,10 @@
 import axios from "axios";
-
+//view
 export const GET_ALL_PRODUCTITEMS_LOADING = "GET_ALL_PRODUCTITEMS_LOADING";
 export const GET_ALL_PRODUCTITEMS_SUCESS = "GET_ALL_PRODUCTITEMS_SUCESS";
 export const GET_ALL_PRODUCTITEMS_FAIL = "GET_ALL_PRODUCTITEMS_FAIL";
+
+export const SET_USER_SELECTED_PRODUCTITEM = "SET_USER_SELECTED_PRODUCTITEM";
 
 export const getAllProductitems = () => {
   return (dispatch) => {
@@ -20,5 +22,11 @@ export const getAllProductitems = () => {
         console.log(e);
         dispatch({ type: GET_ALL_PRODUCTITEMS_FAIL });
       });
+  };
+};
+
+export const setUserSelectedProductitem = (productitem) => {
+  return (dispatch) => {
+    dispatch({ type: SET_USER_SELECTED_PRODUCTITEM, payload: productitem });
   };
 };
