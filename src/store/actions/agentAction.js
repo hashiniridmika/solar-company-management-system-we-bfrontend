@@ -29,21 +29,21 @@ export const getAllAgents = () => {
   };
 };
 
-export const setUserSelectedAgent = (user) => {
+export const setUserSelectedAgent = (agent) => {
   return (dispatch) => {
-    dispatch({ type: SET_USER_SELECTED_AGENT, payload: user });
+    dispatch({ type: SET_USER_SELECTED_AGENT, payload: agent });
   };
 };
 
 //update
-export const updateAgent = (user) => {
+export const updateAgent = (agent) => {
   return (dispatch) => {
     dispatch({ type: UPDATE_AGENTS_START });
     axios
-      .post("http://localhost:5002/agent/update", { user })
+      .post("http://localhost:5002/agent/update", { agent })
       .then((response) => {
         console.log(response.data);
-        dispatch({ type: UPDATE_AGENTS_SUCESS, payload: response.data.user });
+        dispatch({ type: UPDATE_AGENTS_SUCESS, payload: response.data.agent });
       })
       .catch((e) => {
         console.log(e);
