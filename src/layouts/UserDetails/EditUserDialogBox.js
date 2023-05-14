@@ -5,7 +5,7 @@ import EditUserButton from "../../components/UserBox/EditUserButton";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserSelectedAgent } from "../../store/actions/agentAction";
 
-export default function EditUserDialogBox() {
+export default function EditUserDialogBox({ handleOnClick }) {
   const dispatch = useDispatch();
   const { userSelectedAgent } = useSelector((store) => store.agentReducer);
   console.log(userSelectedAgent);
@@ -88,7 +88,7 @@ export default function EditUserDialogBox() {
             paddingTop: "15px",
           }}
         >
-          <EditUserButton />
+          <EditUserButton handleOnClick={handleOnClick} />
         </Grid>
       </Grid>
     </div>
