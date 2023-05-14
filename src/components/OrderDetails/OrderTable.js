@@ -75,7 +75,7 @@ export default function BasicTable() {
               >
                 {val.paymentType}
               </TableCell>
-              <TableCell></TableCell>
+              <TableCell>{val.orderStatus}</TableCell>
             </TableRow>
           ))}
         </TableBody>
