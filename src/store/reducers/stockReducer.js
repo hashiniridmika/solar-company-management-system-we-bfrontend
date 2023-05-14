@@ -30,6 +30,11 @@ const stockReducer = (state = inisialState, action) => {
     case Actions.SET_USER_SELECTED_STOCK:
       return { ...state, userSelectedStock: action.payload };
 
+    case Actions.UPDATE_STOCKS_SUCESS:
+      return { ...state, stockUpdateStatus: "completed" };
+
+    case Actions.CLEAR_STOCKS_UPDATE_STATUS:
+      return { ...state, stockUpdateStatus: "notStarted" };
     default:
       return state;
   }
