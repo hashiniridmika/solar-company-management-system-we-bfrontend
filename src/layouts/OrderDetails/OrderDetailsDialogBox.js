@@ -19,9 +19,7 @@ export default function OrderDetailsDialogBox() {
       </Typography>
       <Grid container>
         <Grid item xs={6}>
-          <AddNewDialogBoxTextfield fieldname="Order Id" />
-          <AddNewDialogBoxTextfield fieldname="Payment Type" />
-          <AddNewDialogBoxTextfield fieldname="Order By" />
+          <AddNewDialogBoxTextfield fieldname="Order Items" rows={8} />
         </Grid>
         <Grid item xs={6}>
           <OrderStatusSelectBox fieldintro="Order Status" />

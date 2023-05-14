@@ -3,7 +3,7 @@ import UserTable from "../../components/UserDetails/UserTable";
 
 export default function UserDetails() {
   return (
-    <div style={{ paddingLeft: "40px", paddingRight: "10px" }}>
+    <div style={{ paddingLeft: "40px", paddingRight: "40px" }}>
       <UserTable />
     </div>
   );

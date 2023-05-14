@@ -2,8 +2,21 @@ import { Grid, Typography } from "@mui/material";
 import React from "react";
 import AddNewDialogBoxTextfield from "../../components/AddNewBox/AddNewDialogBoxTextfield";
 import EditUpdateButton from "../../components/StockBox/EditUpdateButton";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserSelectedStock } from "../../store/actions/stockAction";
 
 export default function EditStockDialogBox() {
+  const dispatch = useDispatch();
+  const { userSelectedStock } = useSelector((store) => store.stockReducer);
+
+  const handleChange = (value, name) => {
+    dispatch(setUserSelectedStock({ ...userSelectedStock, [name]: value }));
+
+    console.log(name);
+    console.log(value);
+  };
+
+  console.log(userSelectedStock);
   return (
     <div>
       <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
@@ -18,13 +31,28 @@ export default function EditStockDialogBox() {
 
       <Grid container>
         <Grid item xs={4}>
-          <AddNewDialogBoxTextfield fieldname="Category" />
+          <AddNewDialogBoxTextfield
+            fieldname="Category"
+            value={userSelectedStock.category.categoryName}
+            name="categoryName"
+            handleChange={handleChange}
+          />
         </Grid>
         <Grid item xs={4}>
-          <AddNewDialogBoxTextfield fieldname="Product Name" />
+          <AddNewDialogBoxTextfield
+            fieldname="Product Name"
+            value={userSelectedStock.item.productName}
+            name="productName"
+            handleChange={handleChange}
+          />
         </Grid>
         <Grid item xs={4}>
-          <AddNewDialogBoxTextfield fieldname="Stock Count" />
+          <AddNewDialogBoxTextfield
+            fieldname="Stock Count"
+            value={userSelectedStock.stockCount}
+            name="stockCount"
+            handleChange={handleChange}
+          />
         </Grid>
       </Grid>
       <Grid

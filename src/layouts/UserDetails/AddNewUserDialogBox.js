@@ -1,9 +1,14 @@
 import { Avatar, Grid, Typography } from "@mui/material";
 import React from "react";
 import AddNewDialogBoxTextfield from "../../components/AddNewBox/AddNewDialogBoxTextfield";
-import AddNewDialogBoxButton from "../../components/AddNewBox/AddNewDialogBoxButton";
+// eslint-disable-next-line
+import { useSelector } from "react-redux";
+import AddUserButton from "../../components/UserBox/AddUserButton";
 
 export default function AddNewUserDialogBox() {
+  const { userSelectedAgent } = useSelector((store) => store.agentReducer);
+  console.log(userSelectedAgent);
+
   return (
     <div>
       <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
@@ -29,23 +34,29 @@ export default function AddNewUserDialogBox() {
       <Grid container>
         <Grid item xs={6}>
           <AddNewDialogBoxTextfield
-            name="Agent Name"
+            fieldname="Agent Name"
             placeholder="Agent Name"
           />
-          <AddNewDialogBoxTextfield name="Username" placeholder="Username" />
-          <AddNewDialogBoxTextfield name="Password" placeholder="Password" />
+          <AddNewDialogBoxTextfield
+            fieldname="Username"
+            placeholder="Username"
+          />
+          <AddNewDialogBoxTextfield
+            fieldname="Password"
+            placeholder="Password"
+          />
         </Grid>
         <Grid item xs={6}>
           <AddNewDialogBoxTextfield
-            name="Email Address"
+            fieldname="Email Address"
             placeholder="Email Address"
           />
           <AddNewDialogBoxTextfield
-            name="Mobile Number"
+            fieldname="Mobile Number"
             placeholder="+94 - - - - - - - - - "
           />
           <AddNewDialogBoxTextfield
-            name="Company Address"
+            fieldname="Company Address"
             placeholder="Company Address"
           />
         </Grid>
@@ -58,7 +69,7 @@ export default function AddNewUserDialogBox() {
             paddingTop: "15px",
           }}
         >
-          <AddNewDialogBoxButton />
+          <AddUserButton />
         </Grid>
       </Grid>
     </div>
