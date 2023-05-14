@@ -4,8 +4,44 @@ import AddNewDialogBoxTextfield from "../../components/AddNewBox/AddNewDialogBox
 import AddNewProductDialogBooxSelectBox from "../../components/AddNewBox/AddNewProductDialogBooxSelectBox";
 import EditProductButton from "../../components/AddNewBox/EditProductButton";
 import AddImageUploadButton from "../../components/AddNewBox/AddImageUploadButton";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserSelectedProductitem } from "../../store/actions/productitemAction";
 
 export default function EditProductDialogBox() {
+  const dispatch = useDispatch();
+  const { userSelectedProductitem } = useSelector(
+    (store) => store.productItemReducer
+  );
+
+  // const handleChange = (value, name) => {
+  //   dispatch(
+  //     setUserSelectedProductitem({ ...userSelectedProductitem, [name]: value })
+  //   );
+  const handleChange = (value, name) => {
+    if (name === "productStockCount.stockCount") {
+      dispatch(
+        setUserSelectedProductitem({
+          ...userSelectedProductitem,
+          productStockCount: {
+            ...userSelectedProductitem.productStockCount,
+            stockCount: value,
+          },
+        })
+      );
+    } else {
+      dispatch(
+        setUserSelectedProductitem({
+          ...userSelectedProductitem,
+          [name]: value,
+        })
+      );
+    }
+
+    console.log(name);
+    console.log(value);
+  };
+
+  console.log(userSelectedProductitem);
   return (
     <div>
       <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
@@ -23,10 +59,16 @@ export default function EditProductDialogBox() {
           <AddNewDialogBoxTextfield
             fieldname="Product Name"
             placeholder="Enter Product Name"
+            value={userSelectedProductitem.productName}
+            name="productName"
+            handleChange={handleChange}
           />
           <AddNewDialogBoxTextfield
             fieldname="Description"
             placeholder="Enter Description"
+            value={userSelectedProductitem.productDescription}
+            name="productDescription"
+            handleChange={handleChange}
             rows={4}
           />
           <Grid container>
@@ -34,12 +76,18 @@ export default function EditProductDialogBox() {
               <AddNewDialogBoxTextfield
                 fieldname="Price(LKR)"
                 placeholder="Enter Price"
+                value={userSelectedProductitem.price}
+                name="price"
+                handleChange={handleChange}
               />
             </Grid>
             <Grid item xs={6}>
               <AddNewDialogBoxTextfield
                 fieldname="Stock Count"
                 placeholder="Enter Count"
+                value={userSelectedProductitem.productStockCount.stockCount}
+                name="productStockCount.stockCount"
+                handleChange={handleChange}
               />
             </Grid>
           </Grid>
