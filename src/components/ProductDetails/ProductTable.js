@@ -8,11 +8,11 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AddNewProductButton from "../common/TopNav/AddNewProductButton";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import AddNewProductDialogBox from "../../layouts/ProductDetails/AddNewProductDialogBox";
@@ -20,16 +20,25 @@ import EditProductDialogBox from "../../layouts/ProductDetails/EditProductDialog
 import DeleteProductDialogBox from "../../layouts/ProductDetails/DeleteProductDialogBox";
 import ViewProductFeedbackDialogBox from "../../layouts/ProductDetails/ViewProductFeedbackDialogBox";
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
+import Rating from "@mui/material/Rating";
+
+import {
+  setUserSelectedProductitem,
+  getAllProductitems,
+} from "../../store/actions/productitemAction";
 
 export default function BasicTable() {
+  const dispatch = useDispatch();
   const [openAdd, setOpenAdd] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [openFeedback, setOpenFeedback] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
-  const { allProductitemList } = useSelector(
+
+  const { allProductitemList, userSelectedProductitem } = useSelector(
     (store) => store.productItemReducer
   );
+  console.log(userSelectedProductitem);
 
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
@@ -42,6 +51,14 @@ export default function BasicTable() {
   const handleChangePage = (event, value) => {
     setPage(value);
   };
+
+  const setvalue = (val) => {
+    dispatch(setUserSelectedProductitem(val));
+  };
+
+  useEffect(() => {
+    dispatch(getAllProductitems());
+  }, [dispatch]);
 
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
@@ -81,7 +98,15 @@ export default function BasicTable() {
               </TableCell>
               <TableCell>{val.productName}</TableCell>
               <TableCell>{val.price}</TableCell>
-              <TableCell>t </TableCell>
+              <TableCell>
+                <Rating
+                  name="read-only"
+                  size="small"
+                  value={val.ratings}
+                  precision={0.5}
+                  readOnly
+                />
+              </TableCell>
               <TableCell>{val.productStockCount.stockCount}</TableCell>
               <TableCell>{val.category.categoryName}</TableCell>
               <TableCell>
@@ -102,6 +127,7 @@ export default function BasicTable() {
                         style={{ color: "#989586" }}
                         onClick={() => {
                           setOpenEdit(true);
+                          setvalue(val);
                         }}
                       />
                     </IconButton>
