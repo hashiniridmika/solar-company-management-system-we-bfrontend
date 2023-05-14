@@ -5,9 +5,10 @@ import EditUpdateButton from "../../components/StockBox/EditUpdateButton";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserSelectedStock } from "../../store/actions/stockAction";
 
-export default function EditStockDialogBox() {
+export default function EditStockDialogBox({ handleOnClick }) {
   const dispatch = useDispatch();
   const { userSelectedStock } = useSelector((store) => store.stockReducer);
+  console.log(userSelectedStock);
 
   const handleChange = (value, name) => {
     dispatch(setUserSelectedStock({ ...userSelectedStock, [name]: value }));
@@ -16,7 +17,6 @@ export default function EditStockDialogBox() {
     console.log(value);
   };
 
-  console.log(userSelectedStock);
   return (
     <div>
       <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
@@ -64,7 +64,7 @@ export default function EditStockDialogBox() {
           paddingTop: "28px",
         }}
       >
-        <EditUpdateButton />
+        <EditUpdateButton handleOnClick={handleOnClick} />
       </Grid>
     </div>
   );
