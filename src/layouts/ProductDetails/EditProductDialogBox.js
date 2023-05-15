@@ -13,29 +13,10 @@ export default function EditProductDialogBox() {
     (store) => store.productItemReducer
   );
 
-  // const handleChange = (value, name) => {
-  //   dispatch(
-  //     setUserSelectedProductitem({ ...userSelectedProductitem, [name]: value })
-  //   );
   const handleChange = (value, name) => {
-    if (name === "productStockCount.stockCount") {
-      dispatch(
-        setUserSelectedProductitem({
-          ...userSelectedProductitem,
-          productStockCount: {
-            ...userSelectedProductitem.productStockCount,
-            stockCount: value,
-          },
-        })
-      );
-    } else {
-      dispatch(
-        setUserSelectedProductitem({
-          ...userSelectedProductitem,
-          [name]: value,
-        })
-      );
-    }
+    dispatch(
+      setUserSelectedProductitem({ ...userSelectedProductitem, [name]: value })
+    );
 
     console.log(name);
     console.log(value);

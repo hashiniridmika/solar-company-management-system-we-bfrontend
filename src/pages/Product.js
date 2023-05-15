@@ -17,7 +17,7 @@ export default function Product() {
     if (allProductitemList.length === 0) {
       dispatch(getAllProductitems());
     }
-  }, [allProductitemList.length, dispatch]);
+  }, [dispatch, allProductitemList]);
 
   return (
     <div>

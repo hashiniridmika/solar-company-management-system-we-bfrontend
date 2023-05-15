@@ -107,7 +107,11 @@ export default function BasicTable() {
                   readOnly
                 />
               </TableCell>
-              <TableCell>{val.productStockCount.stockCount}</TableCell>
+              <TableCell>
+                {val.productStockCount
+                  ? val.productStockCount.stockCount
+                  : "N/A"}
+              </TableCell>
               <TableCell>{val.category.categoryName}</TableCell>
               <TableCell>
                 <Grid container>

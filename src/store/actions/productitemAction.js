@@ -15,7 +15,7 @@ export const getAllProductitems = () => {
         console.log(response.data);
         dispatch({
           type: GET_ALL_PRODUCTITEMS_SUCESS,
-          payload: response.data.productItem,
+          payload: response.data.productitem,
         });
       })
       .catch((e) => {
