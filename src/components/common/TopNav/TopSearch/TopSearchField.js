@@ -1,29 +1,25 @@
 import { TextField } from "@mui/material";
 import React from "react";
-//import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
 
 export default function TopSearchField() {
-  const [clicked, setClicked] = React.useState(false);
-
-  const handleClick = () => {
-    setClicked(true);
-  };
   return (
     <div>
       <TextField
         placeholder="What do you want to search"
+        variant="standard"
+        margin="dense"
         sx={{
-          "& .MuiOutlinedInput-root": {
-            height: 37,
-            borderColor: clicked ? "#E8E8E8" : undefined,
+          "& .MuiInputLabel-root": { height: 37, color: "#d8d6ca" },
+          border: "none",
+          borderRadius: 1,
+          width: 800,
+          backgroundColor: "#FFFFFF", // Add the shadow style here
+          "& .MuiInputBase-input::placeholder": {
+            // Add this selector for placeholder
+            paddingLeft: "10px", // Set the left padding here
           },
-          "& .MuiOutlinedInput-root:hover": {
-            borderColor: clicked ? "#E8E8E8" : undefined,
-          },
-          width: 650,
-          backgroundColor: "#FFFFFF",
         }}
-        onClick={handleClick}
+        InputProps={{ disableUnderline: true }}
       />
     </div>
   );
