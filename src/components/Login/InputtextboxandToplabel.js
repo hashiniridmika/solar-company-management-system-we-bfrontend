@@ -13,6 +13,7 @@ export default function InputtextboxandToplabel({ info }) {
 
       <TextField
         fullWidth
+        variant="standard"
         margin="dense"
         sx={{
           "& .MuiInputLabel-root": { color: "#00C569" },
@@ -21,7 +22,6 @@ export default function InputtextboxandToplabel({ info }) {
           boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Add the shadow style here
         }}
         InputProps={{ disableUnderline: true }}
-        variant="standard"
       />
     </div>
   );
