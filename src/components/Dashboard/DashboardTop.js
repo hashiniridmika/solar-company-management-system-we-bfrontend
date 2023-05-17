@@ -26,7 +26,7 @@ export default function DashboardTop() {
         </Grid>
 
         <Grid item>
-          <Typography sx={{ color: "#929292", pl: 90 }}>
+          <Typography sx={{ color: "#929292", pl: 80 }}>
             {currentDate}
           </Typography>
         </Grid>
@@ -37,7 +37,7 @@ export default function DashboardTop() {
             startIcon={<LogoutIcon sx={{ color: "#000000" }} />}
             sx={{
               backgroundColor: "#00C569",
-              width: 120,
+              width: 110,
               textTransform: "none",
               color: "black",
               "&:hover": {
