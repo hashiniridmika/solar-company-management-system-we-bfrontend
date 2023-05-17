@@ -10,9 +10,17 @@ export default function TopSearchButton() {
         startIcon={<SearchIcon />}
         sx={{
           backgroundColor: "#FFFFFF",
-          color: "#7E7E7E",
-          borderColor: "#E8E8E8",
+          color: "#d8d6ca",
+          borderColor: "#EEEEEE",
           textTransform: "none",
+          "&:hover": {
+            backgroundColor: "#FFFFFF",
+            opacity: 0.8,
+          },
+          "&:active": {
+            backgroundColor: "#FFFFFF",
+            opacity: 1, // Change opacity to 1 to remove the fading effect
+          },
         }}
       >
         Search
