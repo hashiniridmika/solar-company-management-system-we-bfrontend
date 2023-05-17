@@ -9,7 +9,7 @@ export default function TopSearch() {
       <div
         style={{
           backgroundColor: "#F8F8F8",
-          padding: 20,
+          padding: 12,
           borderRadius: 12,
         }}
       >
