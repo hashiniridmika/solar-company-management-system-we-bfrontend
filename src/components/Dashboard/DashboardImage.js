@@ -21,8 +21,24 @@ export default function DashboardImage() {
           height: 200,
         }}
       >
-        <Typography sx={{ color: "#018346", pt: 5, pl: 10, fontSize: 28 }}>
-          Welcome
+        <Typography sx={{ pt: 5, pl: 10 }}>
+          <Typography
+            sx={{
+              color: "#27a567",
+              display: "inline",
+              pr: "12px",
+              fontSize: 32,
+            }}
+          >
+            Welcome
+          </Typography>
+          <span style={{ color: "#018346", fontWeight: "bold", fontSize: 28 }}>
+            Hashini Ridmika
+          </span>
+          <Typography sx={{ color: "#27a567", paddingTop: "10px" }}>
+            "Experience seamless management and enhanced productivity with our
+            intuitive"
+          </Typography>
         </Typography>
       </div>
       <div style={{ position: "absolute", top: "-23%", right: "10%" }}>

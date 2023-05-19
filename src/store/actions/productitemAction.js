@@ -10,7 +10,7 @@ export const getAllProductitems = () => {
   return (dispatch) => {
     dispatch({ type: GET_ALL_PRODUCTITEMS_LOADING });
     axios
-      .get("http://localhost:5002/productitem/view")
+      .get("https://plymouthfinal.live:5002/productitem/view")
       .then((response) => {
         console.log(response.data);
         dispatch({

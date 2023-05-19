@@ -11,14 +11,17 @@ import { useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import OrderDetailsDialogBox from "../../layouts/OrderDetails/OrderDetailsDialogBox";
+import OrderStatusButton from "../OrderBox/OrderStatusButton";
 
 export default function BasicTable() {
   const [open, setOpen] = useState(false);
   const [selectedRow, setSelectedRow] = React.useState(null);
   const { allOrderList } = useSelector((store) => store.orderReducer);
 
+  console.log(allOrderList);
+
   const [page, setPage] = useState(1);
-  const rowsPerPage = 8;
+  const rowsPerPage = 6;
   const pageCount = Math.ceil(allOrderList.length / rowsPerPage);
 
   const handleClickOpen = () => {
@@ -65,7 +68,7 @@ export default function BasicTable() {
               }
             >
               <TableCell>
-                {val._id.slice(-7).padStart(val._id.length)}
+                {val._id.slice(-10).padStart(val._id.length)}
               </TableCell>
               <TableCell>{val.orderBy.agentName}</TableCell>
               <TableCell>{val.orderedDateandTime}</TableCell>
@@ -75,7 +78,30 @@ export default function BasicTable() {
               >
                 {val.paymentType}
               </TableCell>
-              <TableCell>{val.orderStatus}</TableCell>
+              <TableCell>
+                {val.orderStatus === "Pending" ? (
+                  <OrderStatusButton name="Pending" backgroundColor="#FFFF8A" />
+                ) : val.orderStatus === "Processing" ? (
+                  <OrderStatusButton
+                    name="Processing"
+                    backgroundColor="#b9d2ee"
+                  />
+                ) : val.orderStatus === "Cancel" ? (
+                  <OrderStatusButton name="Cancel" backgroundColor="#ff6b6b" />
+                ) : val.orderStatus === "Shipping" ? (
+                  <OrderStatusButton
+                    name="Shipping"
+                    backgroundColor="#e8bcf0"
+                  />
+                ) : val.orderStatus === "Completed" ? (
+                  <OrderStatusButton
+                    name="Completed"
+                    backgroundColor="#a9ffa9"
+                  />
+                ) : (
+                  ""
+                )}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

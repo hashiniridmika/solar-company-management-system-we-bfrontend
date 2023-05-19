@@ -3,6 +3,8 @@ import * as Actions from "../actions/catergoryAction";
 const inisialState = {
   getCategoryListLoading: "notStarted",
   allCategoryList: [],
+  userSelectedCategory: {},
+  catgoryUpdateStatus: "notstarted",
 };
 
 const catergoryReducer = (state = inisialState, action) => {
@@ -24,6 +26,15 @@ const catergoryReducer = (state = inisialState, action) => {
         getCategoryListLoading: "fail",
         allCategoryList: [],
       };
+
+    case Actions.SET_USER_SELECTED_CATEGORY:
+      return { ...state, userSelectedCategory: action.payload };
+
+    case Actions.UPDATE_CATERGORIES_SUCESS:
+      return { ...state, catgoryUpdateStatus: "completed" };
+
+    case Actions.CLEAR_CATERGORIES_UPDATE_STATUS:
+      return { ...state, catgoryUpdateStatus: "notStarted" };
 
     default:
       return state;

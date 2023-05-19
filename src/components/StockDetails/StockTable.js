@@ -113,7 +113,7 @@ export default function BasicTable() {
               <TableCell>{val.stockCount}</TableCell>
               <TableCell>
                 {val.stockCount > 0 ? (
-                  <div style={{ color: "green" }}>In Stock</div>
+                  <div style={{ color: "#00C569" }}>In Stock</div>
                 ) : (
                   <div style={{ color: "red" }}>Out of Stock</div>
                 )}

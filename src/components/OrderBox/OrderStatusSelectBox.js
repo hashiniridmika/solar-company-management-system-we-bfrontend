@@ -29,35 +29,44 @@ export default function OrderStatusSelectBox({ fieldintro }) {
             <MenuItem
               value={10}
               sx={{
-                backgroundColor: status === 10 ? "#ff5047" : "#ff5047",
-                color: status === 10 ? "black" : "black",
+                backgroundColor: status === 1 ? "#FFFF8A" : "#FFFF8A",
+                color: status === 1 ? "black" : "black",
+              }}
+            >
+              Pending
+            </MenuItem>
+            <MenuItem
+              value={20}
+              sx={{
+                backgroundColor: status === 2 ? "#b9d2ee" : "#b9d2ee",
+                color: status === 2 ? "black" : "black",
+              }}
+            >
+              Processing
+            </MenuItem>
+            <MenuItem
+              value={30}
+              sx={{
+                backgroundColor: status === 3 ? "#ff5047" : "#ff5047",
+                color: status === 3 ? "black" : "black",
               }}
             >
               Cancel
             </MenuItem>
             <MenuItem
-              value={20}
+              value={40}
               sx={{
-                backgroundColor: status === 20 ? "#b9d2ee" : "#b9d2ee",
-                color: status === 20 ? "black" : "black",
-              }}
-            >
-              In Progress
-            </MenuItem>
-            <MenuItem
-              value={30}
-              sx={{
-                backgroundColor: status === 30 ? "#ffdf78" : "#ffdf78",
-                color: status === 30 ? "black" : "black",
+                backgroundColor: status === 4 ? "#ffdf78" : "#ffdf78",
+                color: status === 4 ? "black" : "black",
               }}
             >
               Shipping
             </MenuItem>
             <MenuItem
-              value={40}
+              value={0}
               sx={{
-                backgroundColor: status === 40 ? "#a9ffa9" : "#a9ffa9",
-                color: status === 40 ? "black" : "black",
+                backgroundColor: status === 5 ? "#a9ffa9" : "#a9ffa9",
+                color: status === 5 ? "black" : "black",
               }}
             >
               Completed

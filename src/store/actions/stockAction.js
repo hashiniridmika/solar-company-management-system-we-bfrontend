@@ -17,7 +17,7 @@ export const getAllStocks = () => {
   return (dispatch) => {
     dispatch({ type: GET_ALL_STOCKS_LOADING });
     axios
-      .get("http://localhost:5002/stock/view")
+      .get("https://plymouthfinal.live:5002/stock/view")
       .then((response) => {
         console.log(response.data);
         dispatch({
@@ -42,7 +42,7 @@ export const updateStock = (stock) => {
   return (dispatch) => {
     dispatch({ type: UPDATE_STOCKS_START });
     axios
-      .post("http://localhost:5002/stock/update", { stock })
+      .post("https://plymouthfinal.live:5002/stock/update", { stock })
       .then((response) => {
         console.log(response.data);
         dispatch({ type: UPDATE_STOCKS_SUCESS, payload: response.data.stock });

@@ -8,7 +8,7 @@ export const getAllOrders = () => {
   return (dispatch) => {
     dispatch({ type: GET_ALL_ORDERS_LOADING });
     axios
-      .get("http://localhost:5002/order/view")
+      .get("https://plymouthfinal.live:5002/order/view")
       .then((response) => {
         console.log(response.data);
         dispatch({ type: GET_ALL_ORDERS_SUCESS, payload: response.data.order });

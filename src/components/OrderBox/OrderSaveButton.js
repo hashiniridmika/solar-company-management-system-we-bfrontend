@@ -12,6 +12,7 @@ export default function OrderSaveButton() {
           backgroundColor: "#00C569",
           textTransform: "none",
           width: 380,
+
           "&:hover": {
             backgroundColor: "#00C569", // Change hover background color
             opacity: 0.8,

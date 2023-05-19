@@ -17,7 +17,7 @@ export const getAllAgents = () => {
   return (dispatch) => {
     dispatch({ type: GET_ALL_AGENTS_LOADING });
     axios
-      .get("http://localhost:5002/agent/view")
+      .get("https://plymouthfinal.live:5002/agent/view")
       .then((response) => {
         console.log(response.data);
         dispatch({ type: GET_ALL_AGENTS_SUCESS, payload: response.data.agent });
@@ -40,7 +40,7 @@ export const updateAgent = (agent) => {
   return (dispatch) => {
     dispatch({ type: UPDATE_AGENTS_START });
     axios
-      .post("http://localhost:5002/agent/update", { agent })
+      .post("https://plymouthfinal.live:5002/agent/update", { agent })
       .then((response) => {
         console.log(response.data);
         dispatch({ type: UPDATE_AGENTS_SUCESS, payload: response.data.agent });
