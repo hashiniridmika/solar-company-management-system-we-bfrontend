@@ -74,7 +74,16 @@ export default function BasicTable() {
               <TableCell>{val.orderedDateandTime}</TableCell>
               <TableCell>{val.billValue}</TableCell>
               <TableCell
-                style={{ color: val.paymentType === "COD" ? "red" : "green" }}
+                style={{
+                  color:
+                    val.paymentType === "cashOnDelivery"
+                      ? "red"
+                      : val.paymentType === "cardPayment"
+                      ? "#00C569"
+                      : val.paymentType === "bankTransfer"
+                      ? "blue"
+                      : "inherit", // fallback color if paymentType doesn't match any condition
+                }}
               >
                 {val.paymentType}
               </TableCell>
