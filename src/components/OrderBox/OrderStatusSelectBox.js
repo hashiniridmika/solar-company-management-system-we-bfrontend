@@ -56,7 +56,7 @@ export default function OrderStatusSelectBox({ fieldintro }) {
             <MenuItem
               value={40}
               sx={{
-                backgroundColor: status === 4 ? "#ffdf78" : "#ffdf78",
+                backgroundColor: status === 4 ? "#e8bcf0" : "#e8bcf0",
                 color: status === 4 ? "black" : "black",
               }}
             >
