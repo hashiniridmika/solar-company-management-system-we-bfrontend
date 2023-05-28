@@ -13,6 +13,11 @@ export const UPDATE_AGENTS_FAIL = "UPDATE_AGENTS_FAIL";
 
 export const CLEAR_AGENTS_UPDATE_STATUS = "CLEAR_AGENTS_UPDATE_STATUS";
 
+//Create
+export const CREATE_AGENT_START = "CREATE_AGENT_START";
+export const CREATE_AGENT_SUCCESS = "CREATE_AGENT_SUCCESS";
+export const CREATE_AGENT_FAIL = "CREATE_AGENT_FAIL";
+
 export const getAllAgents = () => {
   return (dispatch) => {
     dispatch({ type: GET_ALL_AGENTS_LOADING });
@@ -55,5 +60,23 @@ export const updateAgent = (agent) => {
 export const clearAgentUpdateStatus = () => {
   return (dispatch) => {
     dispatch({ type: CLEAR_AGENTS_UPDATE_STATUS });
+  };
+};
+
+//Create
+export const createAgent = (agent) => {
+  console.log(agent);
+  return (dispatch) => {
+    dispatch({ type: CREATE_AGENT_START });
+    axios
+      .post("http://localhost:5002/agent/create", { agent })
+      .then((response) => {
+        console.log(response.data);
+        dispatch({ type: CREATE_AGENT_SUCCESS, payload: response.data.agent });
+      })
+      .catch((e) => {
+        console.log(e);
+        dispatch({ type: CREATE_AGENT_FAIL });
+      });
   };
 };

@@ -1,12 +1,13 @@
 import { Button } from "@mui/material";
 import React from "react";
 
-export default function AddUserButton() {
+export default function AddUserButton({ handleButtonOnClick }) {
   return (
     <div
       style={{ paddingLeft: "20px", paddingTop: "20px", paddingRight: "20px" }}
     >
       <Button
+        onClick={handleButtonOnClick}
         variant="contained"
         sx={{
           backgroundColor: "#00C569",

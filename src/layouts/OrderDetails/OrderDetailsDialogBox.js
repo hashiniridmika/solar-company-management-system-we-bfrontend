@@ -17,13 +17,13 @@ export default function OrderDetailsDialogBox() {
         Welcome to the "Order Details" page. View and manage customer orders,
         update status and export data.
       </Typography>
+
       <Grid container>
         <Grid item xs={6}>
           <AddNewDialogBoxTextfield fieldname="Order Items" rows={8} />
         </Grid>
         <Grid item xs={6}>
           <OrderStatusSelectBox fieldintro="Order Status" />
-
           <OrderSaveButton />
         </Grid>
       </Grid>

@@ -4,6 +4,7 @@ import productItemReducer from "./productitemReducer";
 import stockReducer from "./stockReducer";
 import orderReducer from "./orderReducer";
 import catergoryReducer from "./catergoryReducer";
+import employeeReducer from "./employeesReducer";
 
 const rootReducer = combineReducers({
   agentReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   stockReducer,
   orderReducer,
   catergoryReducer,
+  employeeReducer,
 });
 
 export default rootReducer;

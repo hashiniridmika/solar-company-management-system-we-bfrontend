@@ -44,6 +44,17 @@ export default function BasicTable() {
   const handleClickOpenAdd = () => {
     setOpenAdd(true);
     dispatch(clearAgentUpdateStatus());
+    dispatch(
+      setUserSelectedAgent({
+        agentName: "",
+        companyAddress: "",
+        emailAddress: "",
+        image: "",
+        mobileNumber: "",
+        password: "",
+        username: "",
+      })
+    );
   };
 
   const handleChangePage = (event, value) => {

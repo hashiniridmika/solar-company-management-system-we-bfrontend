@@ -5,6 +5,7 @@ const inisialState = {
   allAgentList: [],
   userSelectedAgent: {},
   agentUpdateStatus: "notStarted",
+  agentCreateStatus: "notStarted",
 };
 
 const agentReducer = (state = inisialState, action) => {
@@ -35,6 +36,18 @@ const agentReducer = (state = inisialState, action) => {
 
     case Actions.CLEAR_AGENTS_UPDATE_STATUS:
       return { ...state, agentUpdateStatus: "notStarted" };
+
+    case Actions.CREATE_AGENT_START:
+      return { ...state, agentCreateStatus: "loading" };
+
+    case Actions.CREATE_AGENT_SUCCESS:
+      return {
+        ...state,
+        agentCreateStatus: "success",
+      };
+
+    case Actions.CREATE_AGENT_FAIL:
+      return { ...state, agentCreateStatus: "fail" };
 
     default:
       return state;

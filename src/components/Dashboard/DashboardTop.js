@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
-import LogoutIcon from "@mui/icons-material/Logout";
+import TopNavLogOutButton from "../common/TopNav/TopnavTopic/TopNavLogOutButton";
 
 export default function DashboardTop() {
   const currentDate = new Date().toLocaleDateString("en-US", {
@@ -32,26 +31,7 @@ export default function DashboardTop() {
         </Grid>
 
         <Grid item>
-          <Button
-            variant="contained"
-            startIcon={<LogoutIcon sx={{ color: "#000000" }} />}
-            sx={{
-              backgroundColor: "#00C569",
-              width: 110,
-              textTransform: "none",
-              color: "black",
-              "&:hover": {
-                backgroundColor: "#00C569", // Change hover background color
-                opacity: 0.8,
-              },
-              "&:active": {
-                backgroundColor: "#00C569", // Change active background color
-                opacity: 0.5,
-              },
-            }}
-          >
-            Log out
-          </Button>
+          <TopNavLogOutButton />
         </Grid>
       </Grid>
     </div>

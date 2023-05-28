@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
-import LogoutIcon from "@mui/icons-material/Logout";
+import TopNavLogOutButton from "./TopNavLogOutButton";
 
 export default function TopicDetails({ name, content }) {
   return (
@@ -20,29 +19,7 @@ export default function TopicDetails({ name, content }) {
         </Grid>
 
         <Grid item>
-          <Button
-            variant="contained"
-            startIcon={
-              <LogoutIcon sx={{ color: "#000000", fontSize: "large" }} />
-            }
-            sx={{
-              backgroundColor: "#00C569",
-              width: 120,
-              textTransform: "none",
-
-              color: "#000000",
-              "&:hover": {
-                backgroundColor: "#00C569", // Change hover background color
-                opacity: 0.8,
-              },
-              "&:active": {
-                backgroundColor: "#00C569", // Change active background color
-                opacity: 0.5,
-              },
-            }}
-          >
-            Log out
-          </Button>
+          <TopNavLogOutButton />
         </Grid>
       </Grid>
       <Grid

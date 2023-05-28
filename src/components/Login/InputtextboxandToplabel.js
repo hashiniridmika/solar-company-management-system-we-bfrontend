@@ -1,7 +1,11 @@
 import React from "react";
 import { Typography, TextField } from "@mui/material";
 
-export default function InputtextboxandToplabel({ info }) {
+export default function InputtextboxandToplabel({
+  label,
+  placeholder,
+  handleChange,
+}) {
   return (
     <div
       style={{
@@ -9,9 +13,10 @@ export default function InputtextboxandToplabel({ info }) {
         color: "#797979",
       }}
     >
-      <Typography>{info}</Typography>
-
+      <Typography>{label}</Typography>
       <TextField
+        placeholder={placeholder}
+        onChange={(e) => handleChange(e.target.value)}
         fullWidth
         variant="standard"
         margin="dense"

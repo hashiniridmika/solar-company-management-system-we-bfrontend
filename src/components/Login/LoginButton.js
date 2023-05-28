@@ -1,10 +1,11 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-export default function LoginButton() {
+export default function LoginButton({ handleOnClick }) {
   return (
-    <div style={{ paddingTop: "10%" }}>
+    <div>
       <Button
+        onClick={handleOnClick}
         variant="contained"
         sx={{
           backgroundColor: "#00C569",
