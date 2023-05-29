@@ -25,6 +25,8 @@ export default function InputtextboxandToplabel({
           border: "1px solid #00C569",
           borderRadius: 2,
           boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Add the shadow style here
+          paddingLeft: "10px",
+          padding: "5px",
         }}
         InputProps={{ disableUnderline: true }}
       />
