@@ -4,8 +4,23 @@ import AddNewDialogBoxTextfield from "../../components/AddNewBox/AddNewDialogBox
 import AddNewDialogBoxButton from "../../components/AddNewBox/AddNewDialogBoxButton";
 import AddNewProductDialogBooxSelectBox from "../../components/AddNewBox/AddNewProductDialogBooxSelectBox";
 import AddImageUploadButton from "../../components/AddNewBox/AddImageUploadButton";
+// eslint-disable-next-line
+import { useDispatch, useSelector } from "react-redux";
+import { setUserSelectedProductitem } from "../../store/actions/productitemAction";
 
-export default function AddNewProductDialogBox() {
+export default function AddNewProductDialogBox({ handleButtonOnClick }) {
+  const dispatch = useDispatch();
+  const { userSelectedProductitem } = useSelector(
+    (store) => store.productitemReducer
+  );
+  console.log(userSelectedProductitem);
+
+  const handleChange = (value, name) => {
+    dispatch(
+      setUserSelectedProductitem({ ...userSelectedProductitem, [name]: value })
+    );
+  };
+
   return (
     <div>
       <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
@@ -24,23 +39,31 @@ export default function AddNewProductDialogBox() {
           <AddNewDialogBoxTextfield
             fieldname="Product Name"
             placeholder="Enter Product Name"
+            handleChange={handleChange}
+            name="productName"
           />
           <AddNewDialogBoxTextfield
             fieldname="Description"
             placeholder="Enter Description"
             rows={4}
+            handleChange={handleChange}
+            name="productDescription"
           />
           <Grid container>
             <Grid item xs={6}>
               <AddNewDialogBoxTextfield
                 fieldname="Price(LKR)"
                 placeholder="Enter Price"
+                handleChange={handleChange}
+                name="price"
               />
             </Grid>
             <Grid item xs={6}>
               <AddNewDialogBoxTextfield
                 fieldname="Stock Count"
                 placeholder="Enter Count"
+                handleChange={handleChange}
+                name="productStockCount"
               />
             </Grid>
           </Grid>
@@ -72,7 +95,7 @@ export default function AddNewProductDialogBox() {
 
           <AddNewProductDialogBooxSelectBox fieldintro="Select Category" />
 
-          <AddNewDialogBoxButton />
+          <AddNewDialogBoxButton handleButtonOnClick={handleButtonOnClick} />
         </Grid>
       </Grid>
     </div>

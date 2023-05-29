@@ -25,6 +25,9 @@ import Rating from "@mui/material/Rating";
 import {
   setUserSelectedProductitem,
   getAllProductitems,
+  clearProductitemUpdateStatus,
+  updateProductitem,
+  createProductitem,
 } from "../../store/actions/productitemAction";
 
 export default function BasicTable() {
@@ -35,9 +38,13 @@ export default function BasicTable() {
   const [openFeedback, setOpenFeedback] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const { allProductitemList, userSelectedProductitem } = useSelector(
-    (store) => store.productItemReducer
-  );
+  const {
+    allProductitemList,
+    userSelectedProductitem,
+    productitemUpdateStatus,
+    productitemCreateStatus,
+  } = useSelector((store) => store.productItemReducer);
+
   console.log(userSelectedProductitem);
 
   const [page, setPage] = useState(1);
@@ -46,19 +53,44 @@ export default function BasicTable() {
 
   const handleClickOpenAdd = () => {
     setOpenAdd(true);
+    dispatch(clearProductitemUpdateStatus());
+    dispatch(
+      setUserSelectedProductitem({
+        productName: "",
+        productDescription: "",
+        price: "",
+        productStockCount: "",
+        category: "",
+        productImage: "",
+      })
+    );
   };
 
   const handleChangePage = (event, value) => {
     setPage(value);
   };
+  const handleButtonOnClick = () => {
+    dispatch(createProductitem(userSelectedProductitem));
+    setOpenAdd(false);
+  };
 
   const setvalue = (val) => {
     dispatch(setUserSelectedProductitem(val));
+    dispatch(clearProductitemUpdateStatus());
+  };
+
+  const handleOnClick = () => {
+    dispatch(updateProductitem(userSelectedProductitem));
+    setOpenEdit(false);
   };
 
   useEffect(() => {
-    dispatch(getAllProductitems());
-  }, [dispatch]);
+    if (
+      productitemUpdateStatus === "completed" ||
+      productitemCreateStatus === "success"
+    )
+      dispatch(getAllProductitems());
+  }, [dispatch, productitemUpdateStatus, productitemCreateStatus]);
 
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
@@ -189,7 +221,11 @@ export default function BasicTable() {
         }}
       >
         {openAdd && (
-          <AddNewProductDialogBox isOpen={openAdd} setIsOpen={setOpenAdd} />
+          <AddNewProductDialogBox
+            isOpen={openAdd}
+            setIsOpen={setOpenAdd}
+            handleButtonOnClick={handleButtonOnClick}
+          />
         )}
       </Dialog>
       <Dialog
@@ -203,7 +239,11 @@ export default function BasicTable() {
           },
         }}
       >
-        <EditProductDialogBox isOpen={openEdit} setIsOpen={setOpenEdit} />
+        <EditProductDialogBox
+          isOpen={openEdit}
+          setIsOpen={setOpenEdit}
+          handleOnClick={handleOnClick}
+        />
       </Dialog>
       <Dialog
         open={openDelete}

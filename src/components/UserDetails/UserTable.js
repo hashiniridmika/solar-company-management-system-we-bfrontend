@@ -24,6 +24,7 @@ import {
   getAllAgents,
   clearAgentUpdateStatus,
   updateAgent,
+  createAgent,
 } from "../../store/actions/agentAction";
 
 export default function BasicTable() {
@@ -33,9 +34,12 @@ export default function BasicTable() {
   const [openEdit, setOpenEdit] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const { allAgentList, agentUpdateStatus, userSelectedAgent } = useSelector(
-    (store) => store.agentReducer
-  );
+  const {
+    allAgentList,
+    agentUpdateStatus,
+    userSelectedAgent,
+    agentCreateStatus,
+  } = useSelector((store) => store.agentReducer);
 
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
@@ -61,6 +65,11 @@ export default function BasicTable() {
     setPage(value);
   };
 
+  const handleButtonOnClick = () => {
+    dispatch(createAgent(userSelectedAgent));
+    setOpenAdd(false);
+  };
+
   const setvalue = (val) => {
     dispatch(setUserSelectedAgent(val));
     dispatch(clearAgentUpdateStatus());
@@ -72,10 +81,10 @@ export default function BasicTable() {
   };
 
   useEffect(() => {
-    if (agentUpdateStatus === "completed") {
+    if (agentUpdateStatus === "completed" || agentCreateStatus === "success") {
       dispatch(getAllAgents());
     }
-  }, [dispatch, agentUpdateStatus]);
+  }, [dispatch, agentUpdateStatus, agentCreateStatus]);
 
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
@@ -184,7 +193,11 @@ export default function BasicTable() {
         }}
       >
         {openAdd && (
-          <AddNewUserDialogBox isOpen={openAdd} setIsOpen={setOpenAdd} />
+          <AddNewUserDialogBox
+            isOpen={openAdd}
+            setIsOpen={setOpenAdd}
+            handleButtonOnClick={handleButtonOnClick}
+          />
         )}
       </Dialog>
 

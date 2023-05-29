@@ -1,12 +1,13 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-export default function AddNewDialogBoxButton() {
+export default function AddNewDialogBoxButton({ handleButtonOnClick }) {
   return (
     <div
       style={{ paddingLeft: "20px", paddingTop: "95px", paddingRight: "20px" }}
     >
       <Button
+        onClick={handleButtonOnClick}
         variant="contained"
         sx={{
           backgroundColor: "#00C569",

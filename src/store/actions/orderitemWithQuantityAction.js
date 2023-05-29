@@ -1,11 +1,15 @@
 import axios from "axios";
 
+//view
 export const GET_ALL_ORDERITEMWITHQUANTITY_LOADING =
   "GET_ALL_ORDERITEMWITHQUANTITY_LOADING";
 export const GET_ALL_ORDERITEMWITHQUANTITY_SUCESS =
   "GET_ALL_ORDERITEMWITHQUANTITY_SUCESS";
 export const GET_ALL_ORDERITEMWITHQUANTITY_FAIL =
   "GET_ALL_ORDERITEMWITHQUANTITY_FAIL";
+
+export const SET_USER_SELECTED_ORDERITEMWITHQUANTITY =
+  "SET_USER_SELECTED_ORDERITEMWITHQUANTITY";
 
 export const getAllOrderitemWithQuantity = () => {
   return (dispatch) => {
@@ -23,5 +27,13 @@ export const getAllOrderitemWithQuantity = () => {
         console.log(e);
         dispatch({ type: GET_ALL_ORDERITEMWITHQUANTITY_FAIL });
       });
+  };
+};
+export const setUserSelectedOrderitemWithQuantity = (orderitemWithQuantity) => {
+  return (dispatch) => {
+    dispatch({
+      type: SET_USER_SELECTED_ORDERITEMWITHQUANTITY,
+      payload: orderitemWithQuantity,
+    });
   };
 };

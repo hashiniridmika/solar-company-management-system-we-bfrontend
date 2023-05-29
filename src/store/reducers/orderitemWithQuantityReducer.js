@@ -3,6 +3,7 @@ import * as Actions from "../actions/orderitemWithQuantityAction";
 const inisialState = {
   getAllOrderitemWithQuantityListLoading: "notStarted",
   allOrderitemWithQuantityList: [],
+  userSelectedOrderitemWithQuantity: {},
 };
 
 const orderitemWithQuantityReducer = (state = inisialState, action) => {
@@ -24,6 +25,9 @@ const orderitemWithQuantityReducer = (state = inisialState, action) => {
         getAllOrderitemWithQuantityListLoading: "fail",
         allOrderitemWithQuantityList: [],
       };
+
+    case Actions.SET_USER_SELECTED_ORDERITEMWITHQUANTITY:
+      return { ...state, userSelectedOrderitemWithQuantity: action.payload };
 
     default:
       return state;

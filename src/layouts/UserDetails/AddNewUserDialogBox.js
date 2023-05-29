@@ -4,22 +4,15 @@ import AddNewDialogBoxTextfield from "../../components/AddNewBox/AddNewDialogBox
 // eslint-disable-next-line
 import { useDispatch, useSelector } from "react-redux";
 import AddUserButton from "../../components/UserBox/AddUserButton";
-import {
-  createAgent,
-  setUserSelectedAgent,
-} from "../../store/actions/agentAction";
+import { setUserSelectedAgent } from "../../store/actions/agentAction";
 
-export default function AddNewUserDialogBox() {
+export default function AddNewUserDialogBox({ handleButtonOnClick }) {
   const dispatch = useDispatch();
   const { userSelectedAgent } = useSelector((store) => store.agentReducer);
   console.log(userSelectedAgent);
 
   const handleChange = (value, name) => {
     dispatch(setUserSelectedAgent({ ...userSelectedAgent, [name]: value }));
-  };
-
-  const handleButtonOnClick = () => {
-    dispatch(createAgent(userSelectedAgent));
   };
 
   return (

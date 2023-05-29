@@ -7,11 +7,12 @@ import AddImageUploadButton from "../../components/AddNewBox/AddImageUploadButto
 import { useDispatch, useSelector } from "react-redux";
 import { setUserSelectedProductitem } from "../../store/actions/productitemAction";
 
-export default function EditProductDialogBox() {
+export default function EditProductDialogBox({ handleOnClick }) {
   const dispatch = useDispatch();
   const { userSelectedProductitem } = useSelector(
     (store) => store.productItemReducer
   );
+  console.log(userSelectedProductitem);
 
   const handleChange = (value, name) => {
     dispatch(
@@ -22,7 +23,6 @@ export default function EditProductDialogBox() {
     console.log(value);
   };
 
-  console.log(userSelectedProductitem);
   return (
     <div>
       <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
@@ -100,7 +100,7 @@ export default function EditProductDialogBox() {
 
           <AddNewProductDialogBooxSelectBox fieldintro="Select Category" />
 
-          <EditProductButton />
+          <EditProductButton handleOnClick={handleOnClick} />
         </Grid>
       </Grid>
     </div>

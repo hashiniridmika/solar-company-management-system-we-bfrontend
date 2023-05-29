@@ -1,13 +1,14 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-export default function EditProductButton() {
+export default function EditProductButton({ handleOnClick }) {
   return (
     <div
       style={{ paddingLeft: "20px", paddingTop: "95px", paddingRight: "20px" }}
     >
       <Button
         variant="contained"
+        onClick={handleOnClick}
         sx={{
           backgroundColor: "#00C569",
           textTransform: "none",

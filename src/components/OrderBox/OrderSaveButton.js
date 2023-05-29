@@ -11,7 +11,7 @@ export default function OrderSaveButton() {
         sx={{
           backgroundColor: "#00C569",
           textTransform: "none",
-          width: 380,
+          width: 240,
 
           "&:hover": {
             backgroundColor: "#00C569", // Change hover background color
