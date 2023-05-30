@@ -95,16 +95,30 @@ export default function BasicTable() {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell style={{ fontWeight: "bold" }}>Agent ID</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Agent Name</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Username</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Password</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Email Address</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Mobile Number</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Agent ID
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Agent Name
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Username
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Password
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Email Address
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Mobile Number
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
               Company Address
             </TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Action</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Action
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -118,18 +132,30 @@ export default function BasicTable() {
               style={
                 selectedRow === val
                   ? { backgroundColor: "#E3FFE9", color: "white" }
-                  : {}
+                  : { fontFamily: "Poppins" }
               }
             >
-              <TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
                 {val._id.slice(-7).padStart(val._id.length)}
               </TableCell>
-              <TableCell>{val.agentName}</TableCell>
-              <TableCell>{val.username}</TableCell>
-              <TableCell>{val.password}</TableCell>
-              <TableCell>{val.emailAddress}</TableCell>
-              <TableCell>{val.mobileNumber}</TableCell>
-              <TableCell>{val.companyAddress}</TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.agentName}
+              </TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.username}
+              </TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.password}
+              </TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.emailAddress}
+              </TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.mobileNumber}
+              </TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.companyAddress}
+              </TableCell>
               <TableCell>
                 <Grid container>
                   <Grid item>
