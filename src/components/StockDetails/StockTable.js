@@ -83,12 +83,24 @@ export default function BasicTable() {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell style={{ fontWeight: "bold" }}>Product ID</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Category</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Product Name</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Stock</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Status</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Action</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Product ID
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Category
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Product Name
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Stock
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Status
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Action
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -105,13 +117,19 @@ export default function BasicTable() {
                   : {}
               }
             >
-              <TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
                 {val.item._id.slice(-5).padStart(val._id.length)}
               </TableCell>
-              <TableCell>{val.category.categoryName}</TableCell>
-              <TableCell>{val.item.productName}</TableCell>
-              <TableCell>{val.stockCount}</TableCell>
-              <TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.category.categoryName}
+              </TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.item.productName}
+              </TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.stockCount}
+              </TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
                 {val.stockCount > 0 ? (
                   <div style={{ color: "#00C569" }}>In Stock</div>
                 ) : (
