@@ -1,13 +1,13 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-export default function AddNewDialogBoxButton({ handleButtonOnClick }) {
+export default function AddNewDialogBoxButton() {
   return (
     <div
       style={{ paddingLeft: "20px", paddingTop: "95px", paddingRight: "20px" }}
     >
       <Button
-        onClick={handleButtonOnClick}
+        // onClick={handleButtonOnClick}
         variant="contained"
         sx={{
           backgroundColor: "#00C569",
@@ -21,6 +21,7 @@ export default function AddNewDialogBoxButton({ handleButtonOnClick }) {
             backgroundColor: "#00C569", // Change active background color
             opacity: 0.5,
           },
+          fontFamily: "Poppins",
         }}
       >
         Add New

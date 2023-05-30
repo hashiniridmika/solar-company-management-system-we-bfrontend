@@ -4,22 +4,21 @@ import AddNewDialogBoxTextfield from "../../components/AddNewBox/AddNewDialogBox
 import AddNewDialogBoxButton from "../../components/AddNewBox/AddNewDialogBoxButton";
 import AddNewProductDialogBooxSelectBox from "../../components/AddNewBox/AddNewProductDialogBooxSelectBox";
 import AddImageUploadButton from "../../components/AddNewBox/AddImageUploadButton";
-// eslint-disable-next-line
-import { useDispatch, useSelector } from "react-redux";
-import { setUserSelectedProductitem } from "../../store/actions/productitemAction";
+// import { useDispatch, useSelector } from "react-redux";
+// import { setUserSelectedProductitem } from "../../store/actions/productitemAction";
 
-export default function AddNewProductDialogBox({ handleButtonOnClick }) {
-  const dispatch = useDispatch();
-  const { userSelectedProductitem } = useSelector(
-    (store) => store.productitemReducer
-  );
-  console.log(userSelectedProductitem);
+export default function AddNewProductDialogBox() {
+  // const dispatch = useDispatch();
+  // const { userSelectedProductitem } = useSelector(
+  //   (store) => store.productitemReducer
+  // );
+  // console.log(userSelectedProductitem);
 
-  const handleChange = (value, name) => {
-    dispatch(
-      setUserSelectedProductitem({ ...userSelectedProductitem, [name]: value })
-    );
-  };
+  // const handleChange = (value, name) => {
+  //   dispatch(
+  //     setUserSelectedProductitem({ ...userSelectedProductitem, [name]: value })
+  //   );
+  // };
 
   return (
     <div>
@@ -28,7 +27,12 @@ export default function AddNewProductDialogBox({ handleButtonOnClick }) {
       </Typography>
       <Typography
         align="center"
-        sx={{ padding: 1.5, fontSize: 13, color: "#6D6D6D" }}
+        sx={{
+          padding: 1.5,
+          fontSize: 13,
+          color: "#6D6D6D",
+          fontFamily: "Poppins",
+        }}
       >
         Grow Your Business: Showcase Your Latest Offering and Reach a Wider
         Audience by Adding Your Product to Our Diverse and Curated Collection.
@@ -39,31 +43,31 @@ export default function AddNewProductDialogBox({ handleButtonOnClick }) {
           <AddNewDialogBoxTextfield
             fieldname="Product Name"
             placeholder="Enter Product Name"
-            handleChange={handleChange}
-            name="productName"
+            // handleChange={handleChange}
+            // name="productName"
           />
           <AddNewDialogBoxTextfield
             fieldname="Description"
             placeholder="Enter Description"
             rows={4}
-            handleChange={handleChange}
-            name="productDescription"
+            // handleChange={handleChange}
+            // name="productDescription"
           />
           <Grid container>
             <Grid item xs={6}>
               <AddNewDialogBoxTextfield
                 fieldname="Price(LKR)"
                 placeholder="Enter Price"
-                handleChange={handleChange}
-                name="price"
+                // handleChange={handleChange}
+                // name="price"
               />
             </Grid>
             <Grid item xs={6}>
               <AddNewDialogBoxTextfield
                 fieldname="Stock Count"
                 placeholder="Enter Count"
-                handleChange={handleChange}
-                name="productStockCount"
+                // handleChange={handleChange}
+                // name="productStockCount"
               />
             </Grid>
           </Grid>
@@ -76,6 +80,7 @@ export default function AddNewProductDialogBox({ handleButtonOnClick }) {
               paddingLeft: "20px",
               paddingTop: "20px",
               paddingRight: "20px",
+              fontFamily: "Poppins",
             }}
           >
             Upload Product Images
@@ -95,7 +100,7 @@ export default function AddNewProductDialogBox({ handleButtonOnClick }) {
 
           <AddNewProductDialogBooxSelectBox fieldintro="Select Category" />
 
-          <AddNewDialogBoxButton handleButtonOnClick={handleButtonOnClick} />
+          <AddNewDialogBoxButton />
         </Grid>
       </Grid>
     </div>

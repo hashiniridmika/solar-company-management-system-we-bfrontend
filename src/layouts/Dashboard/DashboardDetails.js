@@ -25,7 +25,9 @@ export default function DashboardDetails() {
             color: "#00C569",
             fontSize: 28,
             pl: 4,
-            pt: 3,
+            pt: 4,
+            pb: 2,
+            fontFamily: "Poppins",
           }}
         >
           CATEGORY
@@ -56,7 +58,8 @@ export default function DashboardDetails() {
             color: "#00C569",
             fontSize: 28,
             pl: 4,
-            pt: 3,
+            pt: 4,
+            fontFamily: "Poppins",
           }}
         >
           ANALITIC

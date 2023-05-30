@@ -18,6 +18,7 @@ export default function DeleteProductButton() {
             backgroundColor: "#00C569", // Change active background color
             opacity: 0.5,
           },
+          fontFamily: "Poppins",
         }}
       >
         YES

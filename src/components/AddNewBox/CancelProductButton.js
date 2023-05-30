@@ -20,6 +20,7 @@ export default function CancelProductButton() {
             backgroundColor: "#FFFFFF",
             opacity: 0.5,
           },
+          fontFamily: "Poppins",
         }}
       >
         NO

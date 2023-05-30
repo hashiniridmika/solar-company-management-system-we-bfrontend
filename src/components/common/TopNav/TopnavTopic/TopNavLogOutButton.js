@@ -23,6 +23,7 @@ export default function TopNavLogOutButton() {
             backgroundColor: "#00C569", // Change active background color
             opacity: 0.5,
           },
+          fontFamily: "Poppins",
         }}
       >
         Log out

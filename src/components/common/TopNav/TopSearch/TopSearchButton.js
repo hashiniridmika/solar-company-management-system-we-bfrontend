@@ -21,6 +21,7 @@ export default function TopSearchButton() {
             backgroundColor: "#FFFFFF",
             opacity: 1, // Change opacity to 1 to remove the fading effect
           },
+          fontFamily: "Poppins",
         }}
       >
         Search

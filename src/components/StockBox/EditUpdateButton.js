@@ -19,6 +19,7 @@ export default function EditUpdateButton({ handleOnClick }) {
             backgroundColor: "#00C569", // Change active background color
             opacity: 0.5,
           },
+          fontFamily: "Poppins",
         }}
       >
         Update

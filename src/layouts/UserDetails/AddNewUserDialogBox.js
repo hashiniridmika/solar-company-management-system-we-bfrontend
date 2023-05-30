@@ -17,12 +17,20 @@ export default function AddNewUserDialogBox({ handleButtonOnClick }) {
 
   return (
     <div>
-      <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
+      <Typography
+        align="center"
+        sx={{ pt: 2, fontSize: 30, color: "#00C569", fontFamily: "Poppins" }}
+      >
         Add New Agent
       </Typography>
       <Typography
         align="center"
-        sx={{ padding: 1.5, fontSize: 13, color: "#6D6D6D" }}
+        sx={{
+          padding: 1.5,
+          fontSize: 13,
+          color: "#6D6D6D",
+          fontFamily: "Poppins",
+        }}
       >
         This page allows you to add new users to the system. Enter the required
         information and click "Add" to create a new user account.

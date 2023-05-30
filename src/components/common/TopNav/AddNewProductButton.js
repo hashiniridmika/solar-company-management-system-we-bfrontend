@@ -8,7 +8,7 @@ export default function AddNewProductButton({ handleClickOpen }) {
         display: "flex",
         justifyContent: "flex-end",
         paddingTop: "1%",
-        paddingBottom: "1%",
+        paddingBottom: "0.25%",
       }}
     >
       <Button
@@ -25,6 +25,7 @@ export default function AddNewProductButton({ handleClickOpen }) {
             backgroundColor: "#00C569", // Change active background color
             opacity: 0.5,
           },
+          fontFamily: "Poppins",
         }}
         onClick={handleClickOpen}
       >

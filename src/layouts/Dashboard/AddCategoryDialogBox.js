@@ -6,7 +6,10 @@ import CategorySaveButton from "../../components/Dashboard/CategorySaveButton";
 export default function AddCategoryDialogBox() {
   return (
     <div>
-      <Typography align="center" sx={{ pt: 2, fontSize: 25, color: "#00C569" }}>
+      <Typography
+        align="center"
+        sx={{ pt: 2, fontSize: 25, color: "#00C569", fontFamily: "Poppins" }}
+      >
         Add New Category
       </Typography>
 

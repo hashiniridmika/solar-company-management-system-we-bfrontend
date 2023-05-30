@@ -13,7 +13,11 @@ import Stack from "@mui/material/Stack";
 import OrderDetailsDialogBox from "../../layouts/OrderDetails/OrderDetailsDialogBox";
 import OrderStatusButton from "../OrderBox/OrderStatusButton";
 
-export default function BasicTable() {
+export default function BasicTable({
+  handleorderdata,
+  allOrdersById,
+  getAllOrderByIdLoading,
+}) {
   const [open, setOpen] = useState(false);
   const [selectedRow, setSelectedRow] = React.useState(null);
   const { allOrderList } = useSelector((store) => store.orderReducer);
@@ -42,14 +46,24 @@ export default function BasicTable() {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell style={{ fontWeight: "bold" }}>Order ID</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Ordered By</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Date</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Order ID
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Ordered By
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Date
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
               Total Bill(LKR)
             </TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Payment Type</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Status</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Payment Type
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Status
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -60,21 +74,57 @@ export default function BasicTable() {
               onClick={() => {
                 setSelectedRow(val);
                 handleClickOpen();
+                handleorderdata(val);
               }}
               style={
                 selectedRow === val
-                  ? { backgroundColor: "#E3FFE9", color: "white" }
-                  : {}
+                  ? {
+                      backgroundColor: "#E3FFE9",
+                      color: "white",
+                      fontFamily: "Poppins",
+                    }
+                  : { fontFamily: "Poppins" }
               }
             >
-              <TableCell>
+              <TableCell
+                style={
+                  selectedRow === val
+                    ? { fontFamily: "Poppins" }
+                    : { fontFamily: "Poppins" }
+                }
+              >
                 {val._id.slice(-10).padStart(val._id.length)}
               </TableCell>
-              <TableCell>{val.orderBy.agentName}</TableCell>
-              <TableCell>{val.orderedDateandTime}</TableCell>
-              <TableCell>{val.billValue}</TableCell>
+              <TableCell
+                style={
+                  selectedRow === val
+                    ? { fontFamily: "Poppins" }
+                    : { fontFamily: "Poppins" }
+                }
+              >
+                {val.orderBy.agentName}
+              </TableCell>
+              <TableCell
+                style={
+                  selectedRow === val
+                    ? { fontFamily: "Poppins" }
+                    : { fontFamily: "Poppins" }
+                }
+              >
+                {val.orderedDateandTime}
+              </TableCell>
+              <TableCell
+                style={
+                  selectedRow === val
+                    ? { fontFamily: "Poppins" }
+                    : { fontFamily: "Poppins" }
+                }
+              >
+                {val.billValue}
+              </TableCell>
               <TableCell
                 style={{
+                  fontFamily: "Poppins",
                   color:
                     val.paymentType === "cashOnDelivery"
                       ? "red"
@@ -87,7 +137,7 @@ export default function BasicTable() {
               >
                 {val.paymentType}
               </TableCell>
-              <TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
                 {val.orderStatus === "Pending" ? (
                   <OrderStatusButton name="Pending" backgroundColor="#FFFF8A" />
                 ) : val.orderStatus === "Processing" ? (
@@ -107,9 +157,7 @@ export default function BasicTable() {
                     name="Completed"
                     backgroundColor="#a9ffa9"
                   />
-                ) : (
-                  ""
-                )}
+                ) : null}
               </TableCell>
             </TableRow>
           ))}
@@ -145,7 +193,10 @@ export default function BasicTable() {
           },
         }}
       >
-        <OrderDetailsDialogBox />
+        <OrderDetailsDialogBox
+          allOrdersById={allOrdersById}
+          getAllOrderByIdLoading={getAllOrderByIdLoading}
+        />
       </Dialog>
     </div>
   );

@@ -17,7 +17,7 @@ export default function OrderStatusSelectBox({ fieldintro }) {
       style={{ paddingLeft: "20px", paddingTop: "20px", paddingRight: "20px" }}
     >
       <Box>
-        <Typography color="#000000" fontSize={14}>
+        <Typography color="#000000" fontSize={14} fontFamily="Poppins">
           {fieldintro}
         </Typography>
         <FormControl fullWidth>
@@ -31,6 +31,7 @@ export default function OrderStatusSelectBox({ fieldintro }) {
               sx={{
                 backgroundColor: status === 1 ? "#FFFF8A" : "#FFFF8A",
                 color: status === 1 ? "black" : "black",
+                fontFamily: "Poppins",
               }}
             >
               Pending
@@ -40,6 +41,7 @@ export default function OrderStatusSelectBox({ fieldintro }) {
               sx={{
                 backgroundColor: status === 2 ? "#b9d2ee" : "#b9d2ee",
                 color: status === 2 ? "black" : "black",
+                fontFamily: "Poppins",
               }}
             >
               Processing
@@ -49,6 +51,7 @@ export default function OrderStatusSelectBox({ fieldintro }) {
               sx={{
                 backgroundColor: status === 3 ? "#ff5047" : "#ff5047",
                 color: status === 3 ? "black" : "black",
+                fontFamily: "Poppins",
               }}
             >
               Cancel
@@ -58,6 +61,7 @@ export default function OrderStatusSelectBox({ fieldintro }) {
               sx={{
                 backgroundColor: status === 4 ? "#e8bcf0" : "#e8bcf0",
                 color: status === 4 ? "black" : "black",
+                fontFamily: "Poppins",
               }}
             >
               Shipping
@@ -67,6 +71,7 @@ export default function OrderStatusSelectBox({ fieldintro }) {
               sx={{
                 backgroundColor: status === 5 ? "#a9ffa9" : "#a9ffa9",
                 color: status === 5 ? "black" : "black",
+                fontFamily: "Poppins",
               }}
             >
               Completed

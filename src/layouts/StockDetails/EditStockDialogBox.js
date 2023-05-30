@@ -19,12 +19,20 @@ export default function EditStockDialogBox({ handleOnClick }) {
 
   return (
     <div>
-      <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
+      <Typography
+        align="center"
+        sx={{ pt: 2, fontSize: 30, color: "#00C569", fontFamily: "Poppins" }}
+      >
         Edit Stock
       </Typography>
       <Typography
         align="center"
-        sx={{ padding: 1.5, fontSize: 13, color: "#6D6D6D" }}
+        sx={{
+          padding: 1.5,
+          fontSize: 13,
+          color: "#6D6D6D",
+          fontFamily: "Poppins",
+        }}
       >
         Edit stock page allows you to update existing stock informations.
       </Typography>

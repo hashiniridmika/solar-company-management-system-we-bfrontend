@@ -17,7 +17,7 @@ export default function BasicSelect({ fieldintro }) {
       style={{ paddingLeft: "20px", paddingTop: "20px", paddingRight: "20px" }}
     >
       <Box>
-        <Typography color="#000000" fontSize={14}>
+        <Typography color="#000000" fontSize={14} fontFamily={"Poppins"}>
           {fieldintro}
         </Typography>
         <FormControl fullWidth>

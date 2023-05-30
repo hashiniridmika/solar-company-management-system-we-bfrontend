@@ -17,6 +17,7 @@ export default function TopSearchField() {
           "& .MuiInputBase-input::placeholder": {
             // Add this selector for placeholder
             paddingLeft: "10px", // Set the left padding here
+            fontFamily: "Poppins",
           },
         }}
         InputProps={{ disableUnderline: true }}

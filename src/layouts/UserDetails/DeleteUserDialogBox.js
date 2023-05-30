@@ -6,12 +6,20 @@ import DeleteUserButton from "../../components/UserBox/DeleteUserButton";
 export default function DeleteUserDialogBox() {
   return (
     <div>
-      <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
+      <Typography
+        align="center"
+        sx={{ pt: 2, fontSize: 30, color: "#00C569", fontFamily: "Poppins" }}
+      >
         Do You Want Delete This User?
       </Typography>
       <Typography
         align="center"
-        sx={{ padding: 1.5, fontSize: 16, color: "#6D6D6D" }}
+        sx={{
+          padding: 1.5,
+          fontSize: 16,
+          color: "#6D6D6D",
+          fontFamily: "Poppins",
+        }}
       >
         Are you sure?
       </Typography>

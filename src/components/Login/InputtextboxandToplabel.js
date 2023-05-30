@@ -13,7 +13,7 @@ export default function InputtextboxandToplabel({
         color: "#797979",
       }}
     >
-      <Typography>{label}</Typography>
+      <Typography sx={{ fontFamily: "Poppins" }}>{label}</Typography>
       <TextField
         placeholder={placeholder}
         onChange={(e) => handleChange(e.target.value)}

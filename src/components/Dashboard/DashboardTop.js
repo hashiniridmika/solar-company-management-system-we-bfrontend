@@ -19,13 +19,20 @@ export default function DashboardTop() {
         pr={4}
       >
         <Grid item>
-          <Typography sx={{ color: "#00C569", fontSize: 30, pl: 4 }}>
+          <Typography
+            sx={{
+              color: "#00C569",
+              fontSize: 30,
+              pl: 4,
+              fontFamily: "Poppins",
+            }}
+          >
             DASHBOARD
           </Typography>
         </Grid>
 
         <Grid item>
-          <Typography sx={{ color: "#929292", pl: 80 }}>
+          <Typography sx={{ color: "#929292", pl: 80, fontFamily: "Poppins" }}>
             {currentDate}
           </Typography>
         </Grid>

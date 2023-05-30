@@ -19,6 +19,7 @@ export default function OrderStatusButton({ name, backgroundColor }) {
             backgroundColor: backgroundColor, // Change active background color
             opacity: 0.5,
           },
+          fontFamily: "Poppins",
         }}
       >
         {name}

@@ -19,12 +19,20 @@ export default function EditUserDialogBox({ handleOnClick }) {
 
   return (
     <div>
-      <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
+      <Typography
+        align="center"
+        sx={{ pt: 2, fontSize: 30, color: "#00C569", fontFamily: "Poppins" }}
+      >
         Edit Agent
       </Typography>
       <Typography
         align="center"
-        sx={{ padding: 1.5, fontSize: 13, color: "#6D6D6D" }}
+        sx={{
+          padding: 1.5,
+          fontSize: 13,
+          color: "#6D6D6D",
+          fontFamily: "Poppins",
+        }}
       >
         Edit agent page allows admins to update agent's informations.
       </Typography>

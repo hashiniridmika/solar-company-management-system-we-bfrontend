@@ -56,7 +56,10 @@ export default function Section() {
         handleChange={setPassword}
       />
       {employeeLoginLoadingStatus === "fail" ? (
-        <Typography pt={2} style={{ color: "red", fontWeight: "bold" }}>
+        <Typography
+          pt={2}
+          style={{ color: "red", fontWeight: "bold", fontFamily: "Poppins" }}
+        >
           Email or password incorrect
         </Typography>
       ) : (

@@ -6,12 +6,20 @@ import DeleteProductButton from "../../components/AddNewBox/DeleteProductButton"
 export default function DeleteProductDialogBox() {
   return (
     <div>
-      <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
+      <Typography
+        align="center"
+        sx={{ pt: 2, fontSize: 30, color: "#00C569", fontFamily: "Poppins" }}
+      >
         Do you want delete this product?
       </Typography>
       <Typography
         align="center"
-        sx={{ padding: 1.5, fontSize: 15, color: "#6D6D6D" }}
+        sx={{
+          padding: 1.5,
+          fontSize: 15,
+          color: "#6D6D6D",
+          fontFamily: "Poppins",
+        }}
       >
         Are you sure?
       </Typography>

@@ -27,7 +27,7 @@ import {
   getAllProductitems,
   clearProductitemUpdateStatus,
   updateProductitem,
-  createProductitem,
+  // createProductitem,
 } from "../../store/actions/productitemAction";
 
 export default function BasicTable() {
@@ -42,10 +42,10 @@ export default function BasicTable() {
     allProductitemList,
     userSelectedProductitem,
     productitemUpdateStatus,
-    productitemCreateStatus,
+    // productitemCreateStatus,
   } = useSelector((store) => store.productItemReducer);
 
-  console.log(userSelectedProductitem);
+  // console.log(userSelectedProductitem);
 
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
@@ -54,29 +54,30 @@ export default function BasicTable() {
   const handleClickOpenAdd = () => {
     setOpenAdd(true);
     dispatch(clearProductitemUpdateStatus());
-    dispatch(
-      setUserSelectedProductitem({
-        productName: "",
-        productDescription: "",
-        price: "",
-        productStockCount: "",
-        category: "",
-        productImage: "",
-      })
-    );
+    // dispatch(
+    //   setUserSelectedProductitem({
+    //     productName: "",
+    //     productDescription: "",
+    //     price: "",
+    //     productStockCount: "",
+    //     category: "",
+    //     productImage: "",
+    //   })
+    // );
   };
 
   const handleChangePage = (event, value) => {
     setPage(value);
   };
-  const handleButtonOnClick = () => {
-    dispatch(createProductitem(userSelectedProductitem));
-    setOpenAdd(false);
-  };
+
+  // const handleButtonOnClick = () => {
+  //   // dispatch(createProductitem(userSelectedProductitem));
+  //   setOpenAdd(false);
+  // };
 
   const setvalue = (val) => {
     dispatch(setUserSelectedProductitem(val));
-    dispatch(clearProductitemUpdateStatus());
+    // dispatch(clearProductitemUpdateStatus());
   };
 
   const handleOnClick = () => {
@@ -85,12 +86,12 @@ export default function BasicTable() {
   };
 
   useEffect(() => {
-    if (
-      productitemUpdateStatus === "completed" ||
-      productitemCreateStatus === "success"
-    )
-      dispatch(getAllProductitems());
-  }, [dispatch, productitemUpdateStatus, productitemCreateStatus]);
+    // if (
+    //   productitemUpdateStatus === "completed" ||
+    //   productitemCreateStatus === "success"
+    // )
+    dispatch(getAllProductitems());
+  }, [dispatch, productitemUpdateStatus]);
 
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
@@ -102,13 +103,27 @@ export default function BasicTable() {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell style={{ fontWeight: "bold" }}>Product ID</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Product Name</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Price(LKR)</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Rate</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>StockCount</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Catergory</TableCell>
-            <TableCell style={{ fontWeight: "bold" }}>Action</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Product ID
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Product Name
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Price(LKR)
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Rate
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              StockCount
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Catergory
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold", fontFamily: "Poppins" }}>
+              Action
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -125,11 +140,15 @@ export default function BasicTable() {
                   : {}
               }
             >
-              <TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
                 {val._id.slice(-5).padStart(val._id.length)}
               </TableCell>
-              <TableCell>{val.productName}</TableCell>
-              <TableCell>{val.price}</TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.productName}
+              </TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.price}
+              </TableCell>
               <TableCell>
                 <Rating
                   name="read-only"
@@ -139,12 +158,14 @@ export default function BasicTable() {
                   readOnly
                 />
               </TableCell>
-              <TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
                 {val.productStockCount
                   ? val.productStockCount.stockCount
                   : "N/A"}
               </TableCell>
-              <TableCell>{val.category.categoryName}</TableCell>
+              <TableCell style={{ fontFamily: "Poppins" }}>
+                {val.category.categoryName}
+              </TableCell>
               <TableCell>
                 <Grid container>
                   <Grid item>
@@ -224,7 +245,7 @@ export default function BasicTable() {
           <AddNewProductDialogBox
             isOpen={openAdd}
             setIsOpen={setOpenAdd}
-            handleButtonOnClick={handleButtonOnClick}
+            // handleButtonOnClick={handleButtonOnClick}
           />
         )}
       </Dialog>

@@ -22,6 +22,7 @@ export default function DashboardCategoryAddButton() {
             color: "#00C569",
             borderColor: "#00C569",
           },
+          fontFamily: "Poppins",
         }}
       >
         <AddIcon sx={{ color: isClicked ? "#3d8c40" : "#3d8c40" }} />

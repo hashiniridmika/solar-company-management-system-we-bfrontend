@@ -11,9 +11,14 @@ export default function AddNewDialogBoxTextfield({
 }) {
   return (
     <div
-      style={{ paddingLeft: "20px", paddingTop: "20px", paddingRight: "20px" }}
+      style={{
+        paddingLeft: "20px",
+        paddingTop: "20px",
+        paddingRight: "20px",
+        fontFamily: "Poppins",
+      }}
     >
-      <Typography color="#000000" fontSize={14}>
+      <Typography color="#000000" fontSize={14} fontFamily={"Poppins"}>
         {fieldname}
       </Typography>
       <TextField

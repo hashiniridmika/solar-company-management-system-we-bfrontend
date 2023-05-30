@@ -34,6 +34,12 @@ export const getAllCatergories = () => {
   };
 };
 
+export const setUserSelectedCategory = (category) => {
+  return (dispatch) => {
+    dispatch({ type: SET_USER_SELECTED_CATEGORY, payload: category });
+  };
+};
+
 //update
 export const updateCategory = (category) => {
   return (dispatch) => {

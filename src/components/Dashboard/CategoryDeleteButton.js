@@ -20,6 +20,7 @@ export default function CategoryDeleteButton() {
             backgroundColor: "#FFFFFF",
             opacity: 0.5,
           },
+          fontFamily: "Poppins",
         }}
       >
         Delete

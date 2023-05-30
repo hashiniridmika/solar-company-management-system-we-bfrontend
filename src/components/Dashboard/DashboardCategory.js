@@ -23,6 +23,7 @@ export default function DashboardCategory({ buttonName }) {
             borderColor: "#87ab69",
           },
           width: 135,
+          fontFamily: "Poppins",
         }}
       >
         {buttonName}

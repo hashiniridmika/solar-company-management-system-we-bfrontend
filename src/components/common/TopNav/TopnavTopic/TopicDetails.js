@@ -13,7 +13,14 @@ export default function TopicDetails({ name, content }) {
         pr={4}
       >
         <Grid item>
-          <Typography sx={{ color: "#00C569", fontSize: 30, pl: 4 }}>
+          <Typography
+            sx={{
+              color: "#00C569",
+              fontSize: 30,
+              pl: 4,
+              fontFamily: "Poppins",
+            }}
+          >
             {name}
           </Typography>
         </Grid>
@@ -26,7 +33,15 @@ export default function TopicDetails({ name, content }) {
         item
         sx={{ textAlign: "left", paddingTop: "10px", paddingRight: "15px" }}
       >
-        <Typography sx={{ pl: 4, pb: 1, color: "#6D6D6D", fontSize: 15 }}>
+        <Typography
+          sx={{
+            pl: 4,
+            pb: 1,
+            color: "#6D6D6D",
+            fontSize: 15,
+            fontFamily: "Poppins",
+          }}
+        >
           {content}
         </Typography>
       </Grid>

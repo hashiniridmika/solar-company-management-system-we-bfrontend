@@ -7,8 +7,10 @@ export default function StatItem({ info }) {
     <Grid2 container alignItems="center" spacing={2}>
       <Grid2 item>{info.icon}</Grid2>
       <Grid2 item textAlign="left">
-        <Typography sx={{ color: "#868686" }}>{info.name}</Typography>
-        <Typography>{info.value}</Typography>
+        <Typography sx={{ color: "#868686", fontFamily: "Poppins" }}>
+          {info.name}
+        </Typography>
+        <Typography sx={{ fontFamily: "Poppins" }}>{info.value}</Typography>
       </Grid2>
     </Grid2>
   );

@@ -18,7 +18,10 @@ export default function ViewProductFeedbackDialogBox() {
         paddingRight: "25px",
       }}
     >
-      <Typography align="center" sx={{ pt: 2, fontSize: 30, color: "#00C569" }}>
+      <Typography
+        align="center"
+        sx={{ pt: 2, fontSize: 30, color: "#00C569", fontFamily: "Poppins" }}
+      >
         Reviews And Ratings
       </Typography>
       <div

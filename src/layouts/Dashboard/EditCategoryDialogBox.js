@@ -7,7 +7,10 @@ import CategoryDeleteButton from "../../components/Dashboard/CategoryDeleteButto
 export default function EditCategoryDialogBox() {
   return (
     <div>
-      <Typography align="center" sx={{ pt: 2, fontSize: 25, color: "#00C569" }}>
+      <Typography
+        align="center"
+        sx={{ pt: 2, fontSize: 25, color: "#00C569", fontFamily: "Poppins" }}
+      >
         Edit Category
       </Typography>
       <Grid container>

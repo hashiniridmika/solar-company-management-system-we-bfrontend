@@ -16,6 +16,7 @@ export default function Item({ title, isActive }) {
           justifyContent: "left",
           paddingLeft: "10px",
           pointerEvents: isActive ? "none" : "auto",
+          fontFamily: "Poppins",
         }}
       >
         {title}
