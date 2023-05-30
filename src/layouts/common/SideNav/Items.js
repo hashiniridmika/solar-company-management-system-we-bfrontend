@@ -2,15 +2,32 @@ import React from "react";
 import Item from "../../../components/common/SideNav/Item";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const button = [
-  { title: "Dashboard", route: "dashboard" },
-  { title: "Product Management", route: "product" },
-  { title: "Order Management", route: "order" },
-  { title: "Stock Management", route: "stock" },
-  { title: "User Management", route: "user" },
-];
 export default function Items() {
+  const { employee } = useSelector((store) => store.employeeReducer);
+
+  console.log(employee);
+
+  const button =
+    employee.userType === "admin"
+      ? [
+          { title: "Dashboard", route: "dashboard" },
+          { title: "Product Management", route: "product" },
+          { title: "Order Management", route: "order" },
+          { title: "Stock Management", route: "stock" },
+          { title: "User Management", route: "user" },
+        ]
+      : [
+          // Buttons for non-owner employees
+          { title: "Dashboard", route: "dashboard" },
+          { title: "Product Management", route: "product" },
+          { title: "Order Management", route: "order" },
+          { title: "Stock Management", route: "stock" },
+          { title: "User Management", route: "user" },
+          { title: "Admin Management", route: "admin" },
+        ];
+
   return (
     <div>
       <Grid2 container direction="column">
