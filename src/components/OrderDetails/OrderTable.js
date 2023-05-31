@@ -7,17 +7,15 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import OrderDetailsDialogBox from "../../layouts/OrderDetails/OrderDetailsDialogBox";
 import OrderStatusButton from "../OrderBox/OrderStatusButton";
+import { getAllOrderitemWithQuantity } from "../../store/actions/orderitemWithQuantityAction";
 
-export default function BasicTable({
-  handleorderdata,
-  allOrdersById,
-  getAllOrderByIdLoading,
-}) {
+export default function BasicTable({ allOrdersById, getAllOrderByIdLoading }) {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [selectedRow, setSelectedRow] = React.useState(null);
   const { allOrderList } = useSelector((store) => store.orderReducer);
@@ -36,6 +34,10 @@ export default function BasicTable({
   };
   const handleChangePage = (event, value) => {
     setPage(value);
+  };
+
+  const handleorderdata = (order) => {
+    dispatch(getAllOrderitemWithQuantity(order._id));
   };
 
   const startIndex = (page - 1) * rowsPerPage;
@@ -73,7 +75,7 @@ export default function BasicTable({
               hover
               onClick={() => {
                 setSelectedRow(val);
-                handleClickOpen();
+                handleClickOpen(val);
                 handleorderdata(val);
               }}
               style={
