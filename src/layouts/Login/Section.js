@@ -54,6 +54,7 @@ export default function Section() {
         label="Password"
         placeholder="Enter your password"
         handleChange={setPassword}
+        password="password"
       />
       {employeeLoginLoadingStatus === "fail" ? (
         <Typography

@@ -5,6 +5,7 @@ export default function InputtextboxandToplabel({
   label,
   placeholder,
   handleChange,
+  password,
 }) {
   return (
     <div
@@ -15,6 +16,7 @@ export default function InputtextboxandToplabel({
     >
       <Typography sx={{ fontFamily: "Poppins" }}>{label}</Typography>
       <TextField
+        type={password}
         placeholder={placeholder}
         onChange={(e) => handleChange(e.target.value)}
         fullWidth

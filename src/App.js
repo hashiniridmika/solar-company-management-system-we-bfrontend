@@ -12,7 +12,7 @@ import Admin from "./pages/Admin";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="/solarlife/">
         <Routes>
           <Route index element={<LoginPage />} />
           <Route path="/dashboard" element={<Dashboard />}></Route>

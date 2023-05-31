@@ -1,8 +1,12 @@
 import React from "react";
 import DASHBOARD from "../../assets/images/dashboard.png";
 import { Typography } from "@mui/material";
+import { useSelector } from "react-redux";
 
 export default function DashboardImage() {
+  const { employee } = useSelector((store) => store.employeeReducer);
+  console.log(employee);
+
   return (
     <div
       style={{
@@ -33,7 +37,7 @@ export default function DashboardImage() {
             Welcome
           </Typography>
           <span style={{ color: "#018346", fontWeight: "bold", fontSize: 28 }}>
-            Hashini Ridmika
+            {employee.username}
           </span>
           <Typography sx={{ color: "#27a567", paddingTop: "10px" }}>
             "Experience seamless management and enhanced productivity with our
