@@ -86,11 +86,7 @@ export default function BasicTable() {
   };
 
   useEffect(() => {
-    // if (
-    //   productitemUpdateStatus === "completed" ||
-    //   productitemCreateStatus === "success"
-    // )
-    dispatch(getAllProductitems());
+    if (productitemUpdateStatus === "completed") dispatch(getAllProductitems());
   }, [dispatch, productitemUpdateStatus]);
 
   const startIndex = (page - 1) * rowsPerPage;
@@ -163,9 +159,7 @@ export default function BasicTable() {
                   ? val.productStockCount.stockCount
                   : "N/A"}
               </TableCell>
-              <TableCell style={{ fontFamily: "Poppins" }}>
-                {val.category.categoryName}
-              </TableCell>
+              <TableCell>{val.category.categoryName}</TableCell>
               <TableCell>
                 <Grid container>
                   <Grid item>

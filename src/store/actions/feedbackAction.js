@@ -13,7 +13,7 @@ export const getAllFeedbacks = () => {
         console.log(response.data);
         dispatch({
           type: GET_ALL_FEEDBACKS_SUCESS,
-          payload: response.data.OrderitemWithQuantity,
+          payload: response.data.feedback,
         });
       })
       .catch((e) => {

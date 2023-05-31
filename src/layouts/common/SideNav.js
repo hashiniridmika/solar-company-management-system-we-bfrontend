@@ -16,8 +16,8 @@ export default function SideNav() {
       </div>
       <div
         style={{
-          paddingTop: 40,
-          paddingBottom: 40,
+          paddingTop: 30,
+          paddingBottom: 30,
           width: 250,
         }}
       >

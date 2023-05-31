@@ -5,7 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Typography } from "@mui/material";
 
-export default function BasicSelect({ fieldintro }) {
+export default function AddNewProductDialogBooxSelectBox({ fieldintro }) {
   const [category, setCategory] = React.useState("");
 
   const handleChange = (event) => {
@@ -26,9 +26,13 @@ export default function BasicSelect({ fieldintro }) {
             value={category}
             onChange={handleChange}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={1}>Electeical items</MenuItem>
+            <MenuItem value={2}>Panels</MenuItem>
+            <MenuItem value={3}>Invertors</MenuItem>
+            <MenuItem value={4}>Hardware items</MenuItem>
+            <MenuItem value={5}>Battery</MenuItem>
+            <MenuItem value={6}>Panel board</MenuItem>
+            <MenuItem value={7}>Accessories</MenuItem>
           </Select>
         </FormControl>
       </Box>
